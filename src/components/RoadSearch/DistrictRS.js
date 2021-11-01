@@ -18,7 +18,7 @@ function DistrictRS() {
   return (
     <div className="w-full flex flex-col min-h-0">
       <div className="flex flex-col items-start w-80">
-        <h2 className="mb-3">區域路線搜尋</h2>
+        <h2 className="mb-3 text-2xl">區域路線搜尋</h2>
         <input
           className="input-text mb-2"
           type="text"

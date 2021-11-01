@@ -4,7 +4,7 @@ import { NavLink, BrowserRouter } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="p-10 h-header text-black flex items-center justify-between z-50 shadow-defalut">
+    <div className="p-9 h-header text-black flex items-center justify-between z-50 shadow-defalut shadow-md">
       <BrowserRouter forceRefresh={true}>
         <NavLink
           className="w-max grid grid-col-2 grid-rows-2 grid-flow-col shadow-text"
@@ -16,9 +16,15 @@ function Header() {
           <h1>台灣自行車資訊網</h1>
         </NavLink>
         <div className="flex">
-          <a className="nav-link hover:nav-link-hover">
+        <NavLink
+            className="nav-link hover:nav-link-hover"
+            to="/news/announcement"
+            activeStyle={{
+              borderColor: "#0D706D",
+            }}
+          >
             最新消息
-          </a>
+          </NavLink>
           <NavLink
             className="nav-link hover:nav-link-hover"
             to="/roadmap/district"

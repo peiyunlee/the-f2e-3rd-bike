@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     height: {
-      header: "80px",
+      header: "75px",
     },
     colors: {
       white: "#ffffff",

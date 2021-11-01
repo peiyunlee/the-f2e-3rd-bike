@@ -18,7 +18,7 @@ function Roadmap() {
 
   return (
     <div className="Roadmap content-full relative">
-      <div className="w-max m-0 content-full h-full py-12 px-10 flex absolute z-10 shadow-default">
+      <div className="w-max m-0 content-full h-full py-10 px-10 flex absolute z-10 shadow-default">
         <div
           className={
             !showSearchBar

@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: "Oswald", "Roboto", "Noto Sans TC", sans-serif;
+  font-family: "Noto Sans TC", "Oswald",  sans-serif;
   font-size: 16px;
   letter-spacing: 0.05rem;
 }
@@ -14,11 +14,11 @@ body {
 @layer base {
   h1 {
     @apply font-ch font-bold tracking-wider;
-    @apply w-max;
+    @apply w-max text-black;
   }
   h2 {
-    @apply font-ch font-bold text-2xl tracking-normal;
-    @apply w-max;
+    @apply font-ch font-bold text-3xl tracking-normal;
+    @apply w-max text-black;
   }
   a {
     cursor: pointer;
@@ -46,7 +46,7 @@ body {
   }
   .content-full {
     height: calc(100vh - theme("height.header"));
-    min-height: 700px;
+    min-height: 600px;
   }
   .btn {
     @apply py-2 px-3.5 rounded drop-shadow-default;
@@ -77,6 +77,12 @@ body {
   }
   .checkbox {
     @apply rounded mr-4 mt-0.5 text-green-default cursor-pointer;
+  }
+  .newsitem {
+    @apply border-b border-gray-light flex items-center justify-between py-5 px-12 font-bold;
+  }
+  .section {
+    @apply py-16 px-10
   }
 }
 

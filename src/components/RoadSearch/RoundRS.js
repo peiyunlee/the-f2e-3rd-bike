@@ -1,22 +1,24 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-import ResultItem from "./ResultItem";
+import ResultList from "./ResultList";
 
 function RoundRS() {
-  const test = [
-    "環島1-4",
-    "環島1-4",
-    "環島1-4",
-    "環島1-4",
-    "環島1-4",
-    "環島1-4",
-    "環島1-4",
-  ];
+  const [test, settest] = useState([
+    { name: "環島1-4", checked: false },
+    { name: "環島1-4", checked: false },
+    { name: "環島1-4", checked: false },
+    { name: "環島1-4", checked: false },
+    { name: "環島1-4", checked: false },
+    { name: "環島1-4", checked: false },
+    { name: "環島1-4", checked: false },
+  ]);
   return (
     <div className="w-full flex flex-col min-h-0">
       <div className="flex flex-col items-start w-80">
-        <h2 className="mb-3">環島路線搜尋</h2>
+        <h2 className="mb-3 text-2xl">環島路線搜尋</h2>
         <input
           className="input-text mb-2"
           type="text"
@@ -46,27 +48,14 @@ function RoundRS() {
             </select>
           </div>
         </div>
-        <a href="/" className="btn bg-green-default w-full">
+        <a className="btn bg-green-default w-full">
           <span className="text-white mr-2.5">搜尋</span>
           <FontAwesomeIcon icon={faArrowDown} color="white" />
         </a>
       </div>
       <div className="flex flex-col items-start w-full mt-6 h-full flex-grow min-h-0">
         <div className="font-bold mb-2">搜尋結果</div>
-        <div className="mb-2 flex items-center">
-          <input
-            className="checkbox"
-            type="checkbox"
-            value="all"
-          />
-          <span>全選加入地圖</span>
-        </div>
-        <div className="w-full border-b border-gray-light mb-3"></div>
-        <div className="resultlist">
-          {test.map((item, idx) => (
-            <ResultItem key={idx} name={item} checked={false}/>
-          ))}
-        </div>
+        <ResultList test={test} settest={settest} />
       </div>
     </div>
   );
