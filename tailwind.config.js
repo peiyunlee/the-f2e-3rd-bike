@@ -26,6 +26,7 @@ module.exports = {
     fontFamily: {
       ch: ["Noto Sans TC", "sans-serif"],
       en: ["Oswald", "sans-serif"],
+      enNormal: ["Roboto", "sans-serif"],
     },
     letterSpacing: {
       normal: ".05em",

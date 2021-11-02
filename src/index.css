@@ -20,6 +20,9 @@ body {
     @apply font-ch font-bold text-3xl tracking-normal;
     @apply w-max text-black;
   }
+  h3 {
+    @apply text-black font-ch font-bold text-2xl tracking-normal;
+  }
   a {
     cursor: pointer;
   }

@@ -1,4 +1,6 @@
 import NewsItem from "../components/NewsItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft,faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 function Announcement() {
   return (
@@ -42,6 +44,15 @@ function Announcement() {
           <NewsItem />
           <NewsItem />
           <NewsItem />
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faAngleLeft} />
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>...</span>
+          <span>10</span>
+          <FontAwesomeIcon icon={faAngleRight} />
         </div>
       </div>
     </div>

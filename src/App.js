@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Breadcrumb from "./components/Breadcrumb";
 import Home from "./pages/Home";
 import Roadmap from "./pages/Roadmap";
 import Announcement from "./pages/Announcement";
@@ -18,6 +19,7 @@ function App() {
             <Footer />
           </Route>
           <Route path="/news/announcement">
+            <Breadcrumb />
             <Announcement />
             <Footer />
           </Route>
