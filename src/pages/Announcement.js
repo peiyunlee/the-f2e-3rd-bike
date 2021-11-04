@@ -1,10 +1,57 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import NewsItem from "../components/NewsItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft,faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 
-function Announcement() {
+function Announcement({ news }) {
+  const [data, setdata] = useState([]);
+  const [page, setpage] = useState(1);
+
+  useEffect(() => {
+    setdata(news);
+  }, [news]);
+
+  function _renderPageBtn() {
+    let list = [];
+    for (let i = 1; i <= data.length / 10 + 1; i++) {
+      list.push(
+        page === i ? (
+          <a
+            key={"pagebtn" + i}
+            className="text-yellow-default font-bold mx-2"
+          >
+            {i}
+          </a>
+        ) : (
+          <a
+            key={"pagebtn" + i}
+            className="text-black mx-2"
+            onClick={() => {
+              _clickPageBtn("number", i);
+            }}
+          >
+            {i}
+          </a>
+        )
+      );
+    }
+    return list;
+  }
+
+  function _clickPageBtn(type, newpage = 0) {
+    if (type === "plus" && page + 1 <= parseInt(data.length / 10) + 1) {
+      console.log(parseInt(data.length / 10) + 1);
+      setpage(page + 1);
+    } else if (type === "minus" && page - 1 >= 1) {
+      setpage(page - 1);
+    } else if (type === "number") {
+      setpage(newpage);
+    }
+  }
+
   return (
-    <div className="flex justify-center text-black">
+    <div className="flex justify-center text-black items-start min-height-75vh">
       <div className="w-full max-w-7xl grid gap-10 justify-items-center section">
         <h2>最新消息</h2>
         <div className="grid grid-flow-col gap-10">
@@ -35,24 +82,31 @@ function Announcement() {
               <option value="10">10</option>
             </select>
           </div>
-          <a className="btn bg-yellow-default text-white w-full">查詢</a>
+          <a className="btn bg-yellow-default text-white w-full hover:bg-yellow-hover">
+            查詢
+          </a>
         </div>
         <div className="w-full">
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
+          {data.slice(0 + (page - 1) * 10, 10 + (page - 1) * 10).map((item) => (
+            <NewsItem key={item.title} data={item} type={"announcement"} />
+          ))}
         </div>
         <div>
-          <FontAwesomeIcon icon={faAngleLeft} />
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>...</span>
-          <span>10</span>
-          <FontAwesomeIcon icon={faAngleRight} />
+          <a className="mx-4" onClick={() => _clickPageBtn("minus")}>
+            <FontAwesomeIcon
+              icon={faAngleLeft}
+              color={page === 1 ? "#c8c8c8" : "#33333"}
+            />
+          </a>
+          {_renderPageBtn()}
+          <a className="mx-4" onClick={() => _clickPageBtn("plus")}>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              color={
+                page === parseInt(data.length / 10) + 1 ? "#c8c8c8" : "#33333"
+              }
+            />
+          </a>
         </div>
       </div>
     </div>

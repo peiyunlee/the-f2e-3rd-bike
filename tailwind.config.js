@@ -16,7 +16,7 @@ module.exports = {
       },
       yellow: {
         default: "#F8B714",
-        hover: "#FBD471",
+        hover: "#FFCA43",
         disable: "#FEF2D5",
         bg: "#FEF2D5",
       },

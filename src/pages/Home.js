@@ -1,50 +1,75 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import NewsItem from '../components/NewsItem'
+import NewsItem from "../components/NewsItem";
 
-import main from '../assets/main.png'
-import bike from '../assets/icon/bike.png'
-import timeline from '../assets/icon/timeline.png'
+import main from "../assets/main.png";
+import bike from "../assets/icon/bike.png";
+import timeline from "../assets/icon/timeline.png";
 
-function Home() {
+function Home({ news }) {
+
   return (
-    <div>
+    <div className="pb-16">
       <div className="relative h-full">
         <img src={main} alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
           <h2 className="text-white tracking-widest mb-8">台灣自行車資訊網</h2>
-          <div className="flex">
+          <div className="flex items-center">
             <input
-              className="input-text mb-2"
+              className="input-text mb-2 py-2.5"
               type="text"
               placeholder="請輸入關鍵字"
             />
-            <FontAwesomeIcon icon={faSearch} />
+            <a className="absolute right-0 mb-2.5 mx-4">
+              <FontAwesomeIcon icon={faSearch} size="lg" color="#333333" />
+            </a>
           </div>
         </div>
       </div>
       <div className="pt-16 pb-12 grid grid-flow-col gap-20 justify-center">
-        <Link className="bg-green-default py-4 flex items-center justify-center w-96 rounded" to="/roadmap/district">
+        <Link
+          className="shadow-md bg-green-default py-4 flex items-center justify-center w-96 rounded hover:bg-green-hover"
+          to="/roadmap/district"
+        >
           <img className="w-10" src={timeline} alt="" />
           <span class="font-bold text-white text-2xl ml-6">自行車路線查詢</span>
         </Link>
-        <Link className="bg-yellow-default py-4 flex items-center justify-center w-96 rounded" to="/rent">
+        <Link
+          className="shadow-md bg-yellow-default py-4 flex items-center justify-center w-96 rounded hover:bg-yellow-hover"
+          to="/rent"
+        >
           <img className="w-10" src={bike} alt="" />
           <span class="font-bold text-white text-2xl ml-6">單車租借資訊</span>
         </Link>
       </div>
-      <div className="border section">
-        <h3>最新消息</h3>
-        <div className="border w-full">
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
+      <div className="section grid grid-cols-1 justify-items-center gap-10">
+        <h3>最新公告</h3>
+        <div className="w-full max-w-screen-xl">
+          {news.slice(0, 5).map((item) => (
+            <NewsItem data={item} type={"announcement"} />
+          ))}
         </div>
+        <Link className="flex" to="/news/announcement">
+          <a className="btn bg-green-default text-white w-full hover:bg-green-hover">
+            更多最新公告
+          </a>
+        </Link>
+      </div>
+      <div className="section grid grid-cols-1 justify-items-center gap-10">
+        <h3>近期活動</h3>
+        <div className="w-full max-w-screen-xl">
+          {news.filter(item => item.type === "活動資訊").slice(0, 5).map((item) => (
+            <NewsItem data={item} type={"activity"} />
+          ))}
+        </div>
+        <Link className="flex" to="/news/activity">
+          <a className="btn bg-green-default text-white w-full hover:bg-green-hover">
+            更多活動資訊
+          </a>
+        </Link>
       </div>
     </div>
   );
