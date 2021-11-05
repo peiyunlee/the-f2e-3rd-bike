@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import NewsItem from "../components/NewsItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -17,10 +16,7 @@ function Announcement({ news }) {
     for (let i = 1; i <= data.length / 10 + 1; i++) {
       list.push(
         page === i ? (
-          <a
-            key={"pagebtn" + i}
-            className="text-yellow-default font-bold mx-2"
-          >
+          <a key={"pagebtn" + i} className="text-yellow-default font-bold mx-2">
             {i}
           </a>
         ) : (
@@ -49,11 +45,10 @@ function Announcement({ news }) {
       setpage(newpage);
     }
   }
-
   return (
     <div className="flex justify-center text-black items-start min-height-75vh">
       <div className="w-full max-w-7xl grid gap-10 justify-items-center section">
-        <h2>最新消息</h2>
+        <h2>最新公告</h2>
         <div className="grid grid-flow-col gap-10">
           <div className="grid grid-flow-col gap-10 justify-items-start items-center">
             <span className="font-bold">選擇分類</span>
