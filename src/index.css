@@ -45,7 +45,7 @@ body {
 @layer components {
   .nav-link {
     @apply font-ch font-bold tracking-wide;
-    @apply py-1.5 ml-8 w-max relative border-b-2 border-white;
+    @apply py-1.5 ml-8 w-max relative h-header flex flex-col justify-center;
   }
   .content-full {
     height: calc(100vh - theme("height.header"));
@@ -115,5 +115,8 @@ body {
   }
   .min-height-75vh {
     min-height: 75vh;
+  }
+  .translate-y-75 {
+    transform: translateY(75%)
   }
 }

@@ -24,6 +24,7 @@ function Breadcrumb(props) {
         if (idx === 0)
           return (
             <NavLink
+              key={"/"}
               exact
               to={"/"}
               className="mx-2.5 text-sm hover:text-green-hover"
@@ -39,6 +40,7 @@ function Breadcrumb(props) {
           <>
             <FontAwesomeIcon icon={faAngleRight} color="#333333" size="sm" />
             <NavLink
+              key={flattenRoutes[index].path}
               exact
               to={flattenRoutes[index].path}
               className="mx-2.5 text-sm hover:text-green-hover"

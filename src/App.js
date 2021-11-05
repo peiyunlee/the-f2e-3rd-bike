@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route ,Redirect} from "react-router-dom";
 import "./App.css";
 
 import data_news from "./assets/news.json";
@@ -26,13 +26,13 @@ function App() {
             <Home news={data_news} />
             <Footer />
           </Route>
+        <Redirect exact from="/news" to="/news/announcement" />
           <Route
-            exact
-            path="/news/announcement"
+            path="/news"
             render={(routeProps) => (
               <>
-                <Breadcrumb {...routeProps} />
-                <News news={data_news} />
+                {/* <Breadcrumb {...routeProps} /> */}
+                <News news={data_news}{...routeProps} />
                 <Footer />
               </>
             )}

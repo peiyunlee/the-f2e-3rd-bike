@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-import NewsItem from "../components/NewsItem";
+import NewsItem from "../components/News/NewsItem";
 
 import main from "../assets/main.png";
 import bike from "../assets/icon/bike.png";
