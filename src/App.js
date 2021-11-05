@@ -1,7 +1,9 @@
-import { BrowserRouter, Switch, Route ,Redirect} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
-import data_news from "./assets/news.json";
+import data_news from "./assets/json/news.json";
+
+import ScrollToTop from "./components/ScrollToTop";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -19,25 +21,22 @@ data_news.sort(function (a, b) {
 function App() {
   return (
     <div className="App">
-      <BrowserRouter forceRefresh={true}>
+      <BrowserRouter>
+        <ScrollToTop />
         <Header />
         <Switch>
           <Route exact path="/">
             <Home news={data_news} />
             <Footer />
           </Route>
-        <Redirect exact from="/news" to="/news/announcement" />
-          <Route
-            path="/news"
-            render={(routeProps) => (
-              <>
-                {/* <Breadcrumb {...routeProps} /> */}
-                <News news={data_news}{...routeProps} />
-                <Footer />
-              </>
-            )}
-          />
-          <Route path="/roadmap/:type">
+          <Redirect exact from="/news" to="/news/announcement" />
+          <Route path="/news">
+            <Breadcrumb />
+            <News news={data_news} />
+            <Footer />
+          </Route>
+          <Redirect exact from="/roadmap" to="/roadmap/district" />
+          <Route path="/roadmap">
             <Roadmap />
           </Route>
         </Switch>

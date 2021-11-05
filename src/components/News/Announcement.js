@@ -2,12 +2,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory,useLocation } from "react-router-dom";
 
 import NewsItem from "./NewsItem";
 
-function Announcement({ news, location }) {
+function Announcement({ news }) {
   let history = useHistory();
+  let location = useLocation();
 
   const [data, setdata] = useState([]);
   const [page, setpage] = useState(1);
@@ -15,7 +16,8 @@ function Announcement({ news, location }) {
   useEffect(() => {
     const pathArr = location.pathname.split("/");
     if (pathArr.length >= 4 && pathArr[3] !== "") setpage(parseInt(pathArr[3]));
-  }, [location.pathname]);
+    else setpage(1)
+  }, [location]);
 
   useEffect(() => {
     setdata(news);
@@ -25,6 +27,7 @@ function Announcement({ news, location }) {
     let list = [];
     list.push(
       <NavLink
+        key={`/news/announcement/`}
         className="text-black font-bold mx-2"
         exact
         to={`/news/announcement/`}
@@ -38,6 +41,7 @@ function Announcement({ news, location }) {
     for (let i = 2; i <= data.length / 10 + 1; i++) {
       list.push(
         <NavLink
+        key={`/news/announcement/${i}`}
           className="text-black font-bold mx-2"
           exact
           to={`/news/announcement/${i}`}
@@ -60,7 +64,7 @@ function Announcement({ news, location }) {
       else history.push("/news/announcement/" + (page - 1))
     }
   }
-  
+
   return (
     <div className="w-full max-w-7xl grid gap-10 justify-items-center section">
       <h2>最新公告</h2>

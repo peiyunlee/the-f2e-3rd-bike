@@ -1,15 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from "react";
 
-function ResultItem({ name, checked }) {
+function ResultItem(props) {
   const [input_checked, setinput_checked] = useState(false);
 
   useEffect(() => {
-    setinput_checked(checked);
-  }, [checked]);
+    setinput_checked(props.data.checked);
+  }, [props.data.checked]);
 
-  function HandleChecked() {
+  function _HandleChecked() {
     setinput_checked(!input_checked);
+    props.HandleCheckSingle(props.data.idx);
   }
 
   return (
@@ -18,9 +19,9 @@ function ResultItem({ name, checked }) {
         className="checkbox"
         type="checkbox"
         checked={input_checked}
-        onChange={HandleChecked}
+        onChange={_HandleChecked}
       />
-      <span className="font-ch tracking-normal">{name}</span>
+      <span className="font-ch tracking-normal">{props.data.name}</span>
     </a>
   );
 }

@@ -10,7 +10,6 @@ import bike from "../assets/icon/bike.png";
 import timeline from "../assets/icon/timeline.png";
 
 function Home({ news }) {
-
   return (
     <div className="pb-16">
       <div className="relative h-full">
@@ -48,27 +47,32 @@ function Home({ news }) {
       <div className="section grid grid-cols-1 justify-items-center gap-10">
         <h3>最新公告</h3>
         <div className="w-full max-w-screen-xl">
-          {news.slice(0, 5).map((item) => (
-            <NewsItem data={item} type={"announcement"} />
+          {news.slice(0, 5).map((item,idx) => (
+            <NewsItem key={`news-announcement-${idx}`}  data={item} type={"announcement"} />
           ))}
         </div>
-        <Link className="flex" to="/news/announcement">
-          <a className="btn bg-green-default text-white w-full hover:bg-green-hover">
-            更多最新公告
-          </a>
+        <Link
+          className="flex btn bg-green-default text-white hover:bg-green-hover"
+          to="/news/announcement"
+        >
+          更多最新公告
         </Link>
       </div>
       <div className="section grid grid-cols-1 justify-items-center gap-10">
         <h3>近期活動</h3>
         <div className="w-full max-w-screen-xl">
-          {news.filter(item => item.type === "活動資訊").slice(0, 5).map((item) => (
-            <NewsItem data={item} type={"activity"} />
-          ))}
+          {news
+            .filter((item) => item.type === "活動資訊")
+            .slice(0, 5)
+            .map((item,idx) => (
+              <NewsItem key={`news-activity-${idx}`} data={item} type={"activity"} />
+            ))}
         </div>
-        <Link className="flex" to="/news/activity">
-          <a className="btn bg-green-default text-white w-full hover:bg-green-hover">
-            更多活動資訊
-          </a>
+        <Link
+          className="flex btn bg-green-default text-white hover:bg-green-hover"
+          to="/news/activity"
+        >
+          更多活動資訊
         </Link>
       </div>
     </div>
