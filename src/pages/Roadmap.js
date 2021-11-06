@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Route, NavLink } from "react-router-dom";
@@ -8,10 +8,16 @@ import RoundRS from "../components/RoadSearch/RoundRS";
 import DistrictRS from "../components/RoadSearch/DistrictRS";
 import LayerRS from "../components/RoadSearch/LayerRS";
 
-import routes from "../assets/json/district_taipei.json";
+// import routes from "../assets/json/district_taipei.json";
+
+import { StoreContext } from "../store/mapLayer";
 
 function Roadmap() {
   const [showSearchBar, setshowSearchBar] = useState(true);
+
+  const {
+    state: { districtRoutes, roundRoutes },
+  } = useContext(StoreContext);
 
   function HandleSearchBar() {
     setshowSearchBar(!showSearchBar);
@@ -35,16 +41,16 @@ function Roadmap() {
             <FontAwesomeIcon icon={faAngleLeft} />
             <span className="ml-5">收合</span>
           </NavLink>
-              <Route path="/roadmap/district">
-                <DistrictRS />
-              </Route>
-              <Route exact path="/roadmap/round">
-                <RoundRS />
-              </Route>
-              <Route exact path="/roadmap/layer">
-                <LayerRS />
-              </Route>
-              <Route exact path="/roadmap/close"></Route>
+          <Route path="/roadmap/district">
+            <DistrictRS layerRoutes={districtRoutes} />
+          </Route>
+          <Route exact path="/roadmap/round">
+            <RoundRS />
+          </Route>
+          <Route exact path="/roadmap/layer">
+            <LayerRS />
+          </Route>
+          <Route exact path="/roadmap/close"></Route>
         </div>
         <div className="flex flex-col">
           <NavLink
@@ -91,7 +97,7 @@ function Roadmap() {
           </NavLink>
         </div>
       </div>
-      <Map routes={routes}/>
+      <Map layerRoutes={{ districtRoutes, roundRoutes }} />
     </div>
   );
 }

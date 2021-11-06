@@ -1,16 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, useEffect } from "react";
+import { useState, useContext, useMemo } from "react";
+import { StoreContext } from "../../store/mapLayer";
+import { addDistrictRoute, removeDistrictRoute } from "../../actions/mapLayer";
 
 function ResultItem(props) {
-  const [input_checked, setinput_checked] = useState(false);
+  const [input_checked, setinput_checked] = useState(props.data.checked);
+  const { dispatch } = useContext(StoreContext);
 
-  useEffect(() => {
+  useMemo(() => {
+    console.log("ResultItem refresh data.checked")
     setinput_checked(props.data.checked);
-  }, [props.data.checked]);
+  }, [props]);
 
   function _HandleChecked() {
     setinput_checked(!input_checked);
-    props.HandleCheckSingle(props.data.idx);
+    if (props.data.idx !== undefined) removeDistrictRoute(dispatch, props.data.idx);
+    else addDistrictRoute(dispatch, props.data);
   }
 
   return (
@@ -21,7 +26,9 @@ function ResultItem(props) {
         checked={input_checked}
         onChange={_HandleChecked}
       />
-      <span className="font-ch tracking-normal">{props.data.name}</span>
+      <span className="font-ch tracking-normal">
+        {props.data.RouteName + props.data.idx}
+      </span>
     </a>
   );
 }

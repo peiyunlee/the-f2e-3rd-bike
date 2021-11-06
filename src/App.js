@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import Roadmap from "./pages/Roadmap";
 import News from "./pages/News";
 
+import { MLStoreProvider } from "./store/mapLayer";
+
 data_news.sort(function (a, b) {
   const one = a.newsTime.split(" / ").join("");
   const two = b.newsTime.split(" / ").join("");
@@ -37,7 +39,9 @@ function App() {
           </Route>
           <Redirect exact from="/roadmap" to="/roadmap/district" />
           <Route path="/roadmap">
-            <Roadmap />
+            <MLStoreProvider>
+              <Roadmap />
+            </MLStoreProvider>
           </Route>
         </Switch>
       </BrowserRouter>

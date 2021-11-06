@@ -1,34 +1,34 @@
-import { useState } from "react";
+import { useState, useMemo, useContext } from "react";
+import { StoreContext } from "../../store/mapLayer";
+import {
+  addDistrictRouteList,
+  removeDistrictRouteList,
+} from "../../actions/mapLayer";
 
 import ResultItem from "./ResultItem";
 
 function ResultList(props) {
   const [input_checkAll, setinput_checkAll] = useState(false);
+  const { dispatch } = useContext(StoreContext);
 
-  function HandleCheckAll() {
-    //check all
-    let newresult = props.result;
-    newresult.forEach((item) => {
-      item.checked = !input_checkAll;
-    });
-    props.setresult(newresult);
-    setinput_checkAll(!input_checkAll);
+  useMemo(() => {
+    console.log("ResultList refresh result")
+    _SyncCheckAll();
+  }, [props]);
+
+  function _SyncCheckAll() {
+    setinput_checkAll(props.result.every((ele) => ele.checked));
+    // console.log(result.every((ele) => ele.checked));
   }
 
-  function HandleCheckSingle(idx) {
-    //check single route
-    let newresult = props.result;
-    newresult[idx].checked = !newresult[idx].checked;
-    props.setresult(newresult);
-
-    if (newresult[idx].checked) {
-      //checked
-      if (!props.result.every((item) => item.checked)) return;
-      setinput_checkAll(true);
-    } else {
-      //unchecked
-      setinput_checkAll(false);
-    }
+  function _HandleCheckAll() {
+    if (!input_checkAll)
+      addDistrictRouteList(
+        dispatch,
+        props.result.filter((item) => !item.checked)
+      );
+    else removeDistrictRouteList(dispatch, props.result);
+    setinput_checkAll(!input_checkAll);
   }
 
   return (
@@ -39,18 +39,14 @@ function ResultList(props) {
           type="checkbox"
           value="checkAll"
           checked={input_checkAll}
-          onChange={HandleCheckAll}
+          onChange={_HandleCheckAll}
         />
         <span>全選加入地圖</span>
       </div>
       <div className="w-full border-b border-gray-light mb-3"></div>
       <div className="resultlist">
         {props.result.map((item, idx) => (
-          <ResultItem
-            key={`district-result-${idx}`}
-            data={{ idx: idx, name: item.RouteName, checked: item.checked }}
-            HandleCheckSingle={HandleCheckSingle}
-          />
+          <ResultItem key={`district-result-${idx}`} data={item} />
         ))}
       </div>
     </>

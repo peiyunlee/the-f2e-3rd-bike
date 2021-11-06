@@ -34,14 +34,14 @@ function Home({ news }) {
           to="/roadmap/district"
         >
           <img className="w-10" src={timeline} alt="" />
-          <span class="font-bold text-white text-2xl ml-6">自行車路線查詢</span>
+          <span className="font-bold text-white text-2xl ml-6">自行車路線查詢</span>
         </Link>
         <Link
           className="shadow-md bg-yellow-default py-4 flex items-center justify-center w-96 rounded hover:bg-yellow-hover"
           to="/rent"
         >
           <img className="w-10" src={bike} alt="" />
-          <span class="font-bold text-white text-2xl ml-6">單車租借資訊</span>
+          <span className="font-bold text-white text-2xl ml-6">單車租借資訊</span>
         </Link>
       </div>
       <div className="section grid grid-cols-1 justify-items-center gap-10">
