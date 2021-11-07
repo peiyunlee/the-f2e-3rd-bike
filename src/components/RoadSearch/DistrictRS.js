@@ -49,8 +49,8 @@ function DistrictRS({ layerRoutes }) {
           type="text"
           placeholder="請輸入關鍵字"
         />
-        <div className="grid mb-4 gap-2.5 gap-x-6 w-full justify-start">
-          <div className="flex flex-col items-start w-28">
+        <div className="mb-4 grid grid-flow-col grid-cols-2 gap-x-5 w-full justify-start">
+          <div className="flex flex-col items-start w-full">
             <span className="font-bold mb-2">縣市</span>
             <select className="input-select">
               <option defaultValue value="選擇">
@@ -63,7 +63,7 @@ function DistrictRS({ layerRoutes }) {
               ))}
             </select>
           </div>
-          <div className="flex flex-col items-start w-28">
+          <div className="flex flex-col items-start w-full">
             <span className="font-bold mb-2">鄉鎮區</span>
             <select className="input-select">
               <option defaultValue value="全部">
@@ -72,18 +72,6 @@ function DistrictRS({ layerRoutes }) {
               <option value="台北市">台北市</option>
               <option value="台北市">台北市</option>
               <option value="台北市">台北市</option>
-            </select>
-          </div>
-          <div className="flex flex-col items-start col-span-2 w-52">
-            <span className="font-bold mb-2">路線分類</span>
-            <select className="input-select">
-              <option defaultValue value="全部">
-                全部
-              </option>
-              <option value="自行車專用道">自行車專用道</option>
-              <option value="自行車與行人共用道">自行車與行人共用道</option>
-              <option value="慢車道">慢車道</option>
-              <option value="混和車道">混和車道</option>
             </select>
           </div>
         </div>

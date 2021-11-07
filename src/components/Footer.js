@@ -1,5 +1,5 @@
-import { NavLink, Link } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import { NavLink, Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 function Footer() {
   return (
@@ -15,7 +15,9 @@ function Footer() {
             <h1 className="font-en tracking-widest">TAIWAN BIKE</h1>
             <h1>台灣自行車資訊網</h1>
           </NavLink>
-          <div className="text-sm font-enNormal">©2021 , Taiwan Bike. All Rights Reserved.</div>
+          <div className="text-sm font-enNormal">
+            ©2021 , Taiwan Bike. All Rights Reserved.
+          </div>
         </div>
         <div className="grid grid-flow-col items-start gap-12 pr-16">
           <div className="grid justify-items-start gap-4">
@@ -30,7 +32,10 @@ function Footer() {
           <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">自行車路線</div>
             <Link className="font-ch tracking-wide" to="/roadmap/district">
-              自行車路線
+              區域路線
+            </Link>
+            <Link className="font-ch tracking-wide" to="/roadmap/store">
+              常用路線
             </Link>
           </div>
           <div className="grid justify-items-start gap-4">
@@ -40,21 +45,9 @@ function Footer() {
             </Link>
           </div>
           <div className="grid justify-items-start gap-4">
-            <div className="font-bold font-ch tracking-wide">相關連結</div>
-            <Link className="font-ch tracking-wide" to="/">
-              相關連結
-            </Link>
-          </div>
-          <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">騎乘小叮嚀</div>
             <Link className="font-ch tracking-wide" to="/">
               騎乘小叮嚀
-            </Link>
-          </div>
-          <div className="grid justify-items-start gap-4">
-            <div className="font-bold font-ch tracking-wide">Q & A</div>
-            <Link className="font-ch tracking-wide" to="/">
-              Q & A
             </Link>
           </div>
         </div>

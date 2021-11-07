@@ -4,11 +4,8 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Route, NavLink } from "react-router-dom";
 
 import Map from "../components/Map";
-import RoundRS from "../components/RoadSearch/RoundRS";
 import DistrictRS from "../components/RoadSearch/DistrictRS";
-import LayerRS from "../components/RoadSearch/LayerRS";
-
-// import routes from "../assets/json/district_taipei.json";
+import StoreRS from "../components/RoadSearch/StoreRS";
 
 import { StoreContext } from "../store/mapLayer";
 
@@ -44,13 +41,9 @@ function Roadmap() {
           <Route path="/roadmap/district">
             <DistrictRS layerRoutes={districtRoutes} />
           </Route>
-          {/* <Route exact path="/roadmap/round">
-            <RoundRS />
+          <Route exact path="/roadmap/store">
+            <StoreRS layerRoutes={districtRoutes} />
           </Route>
-          <Route exact path="/roadmap/layer">
-            <LayerRS />
-          </Route>
-          <Route exact path="/roadmap/close"></Route> */}
         </div>
         <div className="flex flex-col">
           <NavLink
@@ -67,34 +60,20 @@ function Roadmap() {
           >
             區域路線
           </NavLink>
-          {/* <NavLink
-            className={
-              showSearchBar
-                ? "btn rounded-l-none w-min bg-gray-default text-white mb-2.5 hover:btn-black"
-                : "btn w-min bg-gray-default text-white mb-2.5 hover:btn-black"
-            }
-            to="/roadmap/round"
-            activeClassName="btn-black"
-            onClick={() => {
-              if (!showSearchBar) HandleSearchBar();
-            }}
-          >
-            環島路線
-          </NavLink>
           <NavLink
             className={
               showSearchBar
                 ? "btn rounded-l-none w-min bg-gray-default text-white mb-2.5 hover:btn-black"
                 : "btn w-min bg-gray-default text-white mb-2.5 hover:btn-black"
             }
-            to="/roadmap/layer"
+            to="/roadmap/store"
             activeClassName="btn-black"
             onClick={() => {
               if (!showSearchBar) HandleSearchBar();
             }}
           >
-            地圖圖層
-          </NavLink> */}
+            常用路線
+          </NavLink>
         </div>
       </div>
       <Map layerRoutes={{ districtRoutes, roundRoutes }} popup={popup} />

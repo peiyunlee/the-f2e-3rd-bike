@@ -70,12 +70,12 @@ function Header() {
             <div className="border-b-2 border-white w-5/6 mx-auto"></div>
             <NavLink
               className="nav-link group-hover:nav-link-hover border-0 text-white font-medium p-2 hover:text-yellow-disable"
-              to="/roadmap/round"
+              to="/roadmap/store"
               activeStyle={{
                 color: "#FEF2D5",
               }}
             >
-              環島路線
+              常用路線
             </NavLink>
           </div>
         </div>
@@ -99,17 +99,6 @@ function Header() {
             }}
           >
             騎乘小叮嚀
-          </NavLink>
-        </div>
-        <div className="group ml-8 w-max h-header flex items-center relative">
-          <NavLink
-            className="nav-link group-hover:nav-link-hover"
-            to="/qa"
-            activeStyle={{
-              borderColor: "#0D706D",
-            }}
-          >
-            Q & A
           </NavLink>
         </div>
         <div className="group ml-8 w-max h-header flex items-center relative">
