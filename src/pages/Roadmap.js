@@ -44,13 +44,13 @@ function Roadmap() {
           <Route path="/roadmap/district">
             <DistrictRS layerRoutes={districtRoutes} />
           </Route>
-          <Route exact path="/roadmap/round">
+          {/* <Route exact path="/roadmap/round">
             <RoundRS />
           </Route>
           <Route exact path="/roadmap/layer">
             <LayerRS />
           </Route>
-          <Route exact path="/roadmap/close"></Route>
+          <Route exact path="/roadmap/close"></Route> */}
         </div>
         <div className="flex flex-col">
           <NavLink
@@ -67,7 +67,7 @@ function Roadmap() {
           >
             區域路線
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className={
               showSearchBar
                 ? "btn rounded-l-none w-min bg-gray-default text-white mb-2.5 hover:btn-black"
@@ -94,7 +94,7 @@ function Roadmap() {
             }}
           >
             地圖圖層
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
       <Map layerRoutes={{ districtRoutes, roundRoutes }} popup={popup} />
