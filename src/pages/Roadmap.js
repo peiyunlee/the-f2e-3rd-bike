@@ -16,7 +16,7 @@ function Roadmap() {
   const [showSearchBar, setshowSearchBar] = useState(true);
 
   const {
-    state: { districtRoutes, roundRoutes },
+    state: { districtRoutes, roundRoutes, popup },
   } = useContext(StoreContext);
 
   function HandleSearchBar() {
@@ -97,7 +97,7 @@ function Roadmap() {
           </NavLink>
         </div>
       </div>
-      <Map layerRoutes={{ districtRoutes, roundRoutes }} />
+      <Map layerRoutes={{ districtRoutes, roundRoutes }} popup={popup} />
     </div>
   );
 }

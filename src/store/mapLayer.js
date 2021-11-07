@@ -35,6 +35,14 @@ const initialState = {
     },
   ],
   roundRoutes: [],
+  popup: {
+    position: [25,121],
+    RouteName: "三元街(東北側2)",
+    City: "臺北市",
+    RoadSectionStart: "和平西路二段104巷",
+    RoadSectionEnd: "和平西路二段98巷",
+    CyclingLength: 367,
+  },
 };
 
 initialState.districtRoutes = initialState.districtRoutes.sort((a, b) => {
