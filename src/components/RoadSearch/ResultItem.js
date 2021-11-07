@@ -47,11 +47,10 @@ function ResultItem(props) {
       className={`resultlist-item ${
         props.data.idx === undefined
           ? "cursor-default"
-          : "hover:bg-yellow-disable"
-      }  ${props.data.RouteName === popup.RouteName ? "bg-yellow-disable" : ""}`}
-      onClick={() => {
-        if (props.data.idx !== undefined) _HandleClickItem();
-      }}
+          : ""
+      }  ${
+        props.data.RouteName === popup.RouteName ? "bg-yellow-disable" : ""
+      }`}
     >
       <input
         className="checkbox"
@@ -59,8 +58,13 @@ function ResultItem(props) {
         checked={input_checked}
         onChange={_HandleChecked}
       />
-      <span className="font-ch tracking-normal">
-        {props.data.RouteName + props.data.idx}
+      <span
+        className="font-ch tracking-normal"
+        onClick={() => {
+          if (props.data.idx !== undefined) _HandleClickItem();
+        }}
+      >
+        {props.data.RouteName}
       </span>
     </a>
   );

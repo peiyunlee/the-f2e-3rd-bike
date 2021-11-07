@@ -1,3 +1,4 @@
+import { popup } from "leaflet";
 import { createContext, useReducer } from "react";
 import * as actions from "../utils/constants";
 
@@ -46,13 +47,23 @@ function reducer(state, action) {
   let arr = state.districtRoutes;
   switch (action.type) {
     case actions.REMOVE_ROUTE_DISTRICT:
-      return {
-        ...state,
-        districtRoutes: [
-          ...arr.slice(0, action.payload),
-          ...arr.slice(action.payload + 1),
-        ],
-      };
+      if (state.popup.RouteName === arr[action.payload].RouteName) {
+        return {
+          ...state,
+          districtRoutes: [
+            ...arr.slice(0, action.payload),
+            ...arr.slice(action.payload + 1),
+          ],
+          popup: {},
+        };
+      } else
+        return {
+          ...state,
+          districtRoutes: [
+            ...arr.slice(0, action.payload),
+            ...arr.slice(action.payload + 1),
+          ],
+        };
     case actions.ADD_ROUTE_DISTRICT:
       arr = [
         ...arr,
@@ -111,6 +122,7 @@ function reducer(state, action) {
       return {
         ...state,
         districtRoutes: [...arr],
+        popup: {},
       };
     case actions.SET_POPUP:
       return {
