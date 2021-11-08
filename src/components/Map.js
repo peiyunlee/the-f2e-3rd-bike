@@ -3,18 +3,15 @@ import { StoreContext } from "../store/mapLayer";
 import { useContext } from "react";
 import { setPopup } from "../actions/mapLayer";
 
-// import "./map.css";
+import "./map.css";
 
-function Map({ layerRoutes, popup }) {
+function Map({ routes, popup }) {
   const { dispatch } = useContext(StoreContext);
 
   const mapCenterPos = [25.028756758486, 121.509912913931];
 
   function _HandleClickItem(data) {
-    const positions = data.Geometry.slice(18, -2)
-      .split(",")
-      .map((ele) => ele.split(" ").reverse());
-
+    const positions = data.positions;
     const result = {
       position: positions[parseInt(positions.length / 2)],
       RouteName: data.RouteName,
@@ -28,17 +25,15 @@ function Map({ layerRoutes, popup }) {
 
   function _renderRoutes() {
     let list = [];
-    layerRoutes.districtRoutes.forEach((route, idx) => {
-      const positions = route.Geometry.slice(18, -2)
-        .split(",")
-        .map((ele) => ele.split(" ").reverse());
+    routes.forEach((route, idx) => {
+      const positions = route.positions;
       list.push(
         <Polyline
           key={`mapRoute-polyline-${idx}`}
           pathOptions={
             popup.RouteName !== route.RouteName
               ? { color: "#0D706D", weight: 5, smoothFactor: 5 }
-              : { color: "#FF9518", weight: 5, smoothFactor: 10 }
+              : { color: "#F8B714", weight: 5, smoothFactor: 10 }
           }
           positions={positions}
           eventHandlers={{

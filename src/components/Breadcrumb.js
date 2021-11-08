@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink,useLocation } from "react-router-dom";
-import routes from "../routes";
+import routes from "../utils/routes";
 
 const flattenArr = (arr) =>
   arr.reduce(function (prev, item) {
@@ -34,11 +34,12 @@ function Breadcrumb() {
         const index = flattenRoutes.findIndex(
           (route) => route.pathname === ele
         );
+        console.log(flattenRoutes[index].path)
         return (
           <>
-            <FontAwesomeIcon icon={faAngleRight} color="#333333" size="sm" />
+            <FontAwesomeIcon key={`icon-${flattenRoutes[index].path}`} icon={faAngleRight} color="#333333" size="sm" />
             <NavLink
-              key={flattenRoutes[index].path}
+              key={`navlink-${flattenRoutes[index].path}`}
               exact
               to={flattenRoutes[index].path}
               className="mx-2.5 text-sm hover:text-green-hover"

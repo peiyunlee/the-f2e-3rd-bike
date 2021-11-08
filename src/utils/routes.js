@@ -36,14 +36,9 @@ const routes = [
             breadcrumbName: "區域路線",
           },
           {
-            path: "/roadmap/round",
-            pathname: "round",
-            breadcrumbName: "環島路線",
-          },
-          {
-            path: "/roadmap/layer",
-            pathname: "layer",
-            breadcrumbName: "地圖圖層",
+            path: "/roadmap/store",
+            pathname: "store",
+            breadcrumbName: "常用路線",
           },
         ],
       },

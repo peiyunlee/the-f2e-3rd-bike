@@ -72,7 +72,7 @@ body {
     @apply border border-gray-light px-3.5 py-1.5 rounded text-black tracking-normal w-full;
   }
   .resultlist {
-    @apply w-full overscroll-auto overflow-y-scroll flex flex-col items-start;
+    @apply w-80 overflow-auto overscroll-y-auto flex flex-col items-start;
     /* height: 56%; */
   }
   .resultlist-item {

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="p-9 h-header text-black flex items-center justify-between z-50 shadow-defalut shadow-md">
+    <div className="p-9 h-header text-black flex items-center justify-between z-50 shadow-defalut shadow-md text-sm">
       <NavLink
         className="w-max grid grid-col-2 grid-rows-2 grid-flow-col shadow-text"
         to="/"
