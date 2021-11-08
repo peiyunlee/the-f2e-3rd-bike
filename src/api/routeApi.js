@@ -18,7 +18,6 @@ export const getRouteResult = async (cityName) => {
       .sort((a, b) => {
         return a.RouteName.localeCompare(b.RouteName, "zh-hant");
       });
-    console.log(result.data);
     return result.data;
   } catch (error) {
     alert("查無資料!!");

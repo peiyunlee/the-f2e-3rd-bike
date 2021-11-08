@@ -9,7 +9,7 @@ import { StoreContext } from "../store/mapLayer";
 function Roadmap() {
 
   const {
-    state: { routes, popup },
+    state: { routes, popup,mapCenterPos },
   } = useContext(StoreContext);
 
   return (
@@ -19,7 +19,7 @@ function Roadmap() {
             <SearchBar />
           </Route>
       </div>
-      <Map routes={routes} popup={popup} />
+      <Map routes={routes} popup={popup} mapCenterPos={mapCenterPos} />
     </div>
   );
 }

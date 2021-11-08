@@ -1,16 +1,27 @@
-import { MapContainer, TileLayer, Popup, Polyline } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Popup,
+  Polyline,
+  useMap,
+} from "react-leaflet";
 import { StoreContext } from "../store/mapLayer";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { setPopup } from "../actions/mapLayer";
 
 import "./map.css";
 
-function Map({ routes, popup }) {
+function Map({ routes, popup, mapCenterPos }) {
   const { dispatch } = useContext(StoreContext);
+  const [centerPos, setcenterPos] = useState(mapCenterPos);
 
-  const mapCenterPos = [25.028756758486, 121.509912913931];
+  let bounds = [];
 
-  function _HandleClickItem(data) {
+  useEffect(() => {
+    setcenterPos(mapCenterPos);
+  }, [mapCenterPos]);
+
+  function _HandleClickRoute(e, data) {
     const positions = data.positions;
     const result = {
       position: positions[parseInt(positions.length / 2)],
@@ -21,12 +32,15 @@ function Map({ routes, popup }) {
       CyclingLength: data.CyclingLength,
     };
     setPopup(dispatch, result);
+    setcenterPos(e.latlng);
   }
 
   function _renderRoutes() {
     let list = [];
+    bounds = [];
     routes.forEach((route, idx) => {
       const positions = route.positions;
+      bounds.push(positions);
       list.push(
         <Polyline
           key={`mapRoute-polyline-${idx}`}
@@ -37,12 +51,23 @@ function Map({ routes, popup }) {
           }
           positions={positions}
           eventHandlers={{
-            click: () => _HandleClickItem(route),
+            click: (e) => _HandleClickRoute(e, route),
           }}
         />
       );
     });
     return list;
+  }
+
+  function ChangeMap({ center }) {
+    let map = useMap();
+    map.panTo(center);
+    if(bounds.length > 0 && popup.position === undefined){
+      map.fitBounds(bounds)
+    }
+      
+
+    return null;
   }
 
   return (
@@ -52,17 +77,18 @@ function Map({ routes, popup }) {
         height: "100%",
         zIndex: "0",
       }}
-      center={mapCenterPos}
-      zoom={20}
+      center={centerPos}
+      zoom={8}
       closePopupOnClick={false}
     >
+      <ChangeMap center={centerPos} />
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {_renderRoutes()}
       {popup.position !== undefined ? (
-        <Popup position={popup.position} autoClose={false} closeButton={false}>
+        <Popup position={centerPos} autoClose={false} closeButton={false}>
           <div className="font-bold font-ch text-lg">{popup.RouteName}</div>
           <div className="font-ch text-base font-normal">{popup.City}</div>
           <div className="font-ch text-base font-normal">{`${popup.RoadSectionStart} - ${popup.RoadSectionEnd}`}</div>

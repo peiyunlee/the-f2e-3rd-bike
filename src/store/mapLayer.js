@@ -1,4 +1,3 @@
-import { popup } from "leaflet";
 import { createContext, useReducer } from "react";
 import * as actions from "../utils/constants";
 
@@ -7,6 +6,7 @@ export const StoreContext = createContext();
 const initialState = {
   routes: [],
   popup: {},
+  mapCenterPos:[23.583234, 120.5825975]
 };
 
 initialState.routes = initialState.routes.sort((a, b) => {
@@ -46,6 +46,11 @@ function reducer(state, action) {
         ...state,
         popup: action.payload,
       };
+      case actions.SET_MAP_CENTER_POS:
+        return {
+          ...state,
+          mapCenterPos: action.payload,
+        };
     default:
       return state;
   }
