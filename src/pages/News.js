@@ -10,7 +10,7 @@ function News({ news }) {
           <Announcement news={news} />
         </Route>
         <Route path="/news/activity/">
-          <Activity news={news} />
+          <Activity news={news.filter((ele) => ele.type === "活動資訊")} />
         </Route>
       </Switch>
     </div>

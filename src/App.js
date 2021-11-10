@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Breadcrumb from "./components/Breadcrumb";
 import Home from "./pages/Home";
-import Roadmap from "./pages/Roadmap";
+import RouteMap from "./pages/RouteMap";
 import News from "./pages/News";
 
 import { MLStoreProvider } from "./store/mapLayer";
@@ -31,16 +31,16 @@ function App() {
             <Home news={data_news} />
             <Footer />
           </Route>
-          <Redirect exact from="/news" to="/news/announcement" />
-          <Route path="/news">
+          <Redirect exact from="/news/" to="/news/announcement/" />
+          <Route path="/news/">
             <Breadcrumb />
             <News news={data_news} />
             <Footer />
           </Route>
-          <Redirect exact from="/roadmap" to="/roadmap/district" />
-          <Route path="/roadmap">
+          <Redirect exact from="/route/" to="/route/district" />
+          <Route path="/route/">
             <MLStoreProvider>
-              <Roadmap />
+              <RouteMap />
             </MLStoreProvider>
           </Route>
         </Switch>
