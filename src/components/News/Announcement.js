@@ -10,7 +10,6 @@ function Announcement({ news }) {
   let history = useHistory();
   let location = useLocation();
 
-  const [data, setdata] = useState([]);
   const [page, setpage] = useState(1);
 
   useEffect(() => {
@@ -18,10 +17,6 @@ function Announcement({ news }) {
     if (pathArr.length >= 4 && pathArr[3] !== "") setpage(parseInt(pathArr[3]));
     else setpage(1)
   }, [location]);
-
-  useEffect(() => {
-    setdata(news);
-  }, [news]);
 
   function _renderPageBtn() {
     let list = [];
@@ -38,7 +33,7 @@ function Announcement({ news }) {
         {1}
       </NavLink>
     );
-    for (let i = 2; i <= data.length / 10 + 1; i++) {
+    for (let i = 2; i <= news.length / 10 + 1; i++) {
       list.push(
         <NavLink
         key={`/news/announcement/${i}`}
@@ -57,7 +52,7 @@ function Announcement({ news }) {
   }
 
   function _clickPageBtn(type, newpage = 0) {
-    if (type === "plus" && page + 1 <= parseInt(data.length / 10) + 1) {
+    if (type === "plus" && page + 1 <= parseInt(news.length / 10) + 1) {
       history.push("/news/announcement/" + (page + 1));
     } else if (type === "minus" && page - 1 >= 1) {
       if (page - 1 === 1) history.push("/news/announcement/");
@@ -66,7 +61,7 @@ function Announcement({ news }) {
   }
 
   return (
-    <div className="w-full max-w-7xl grid gap-10 justify-items-center section">
+    <div className="w-full max-w-7xl px-10 grid gap-10 justify-items-center section">
       <h2>最新公告</h2>
       <div className="grid grid-flow-col gap-10">
         <div className="grid grid-flow-col gap-10 justify-items-start items-center">
@@ -101,7 +96,7 @@ function Announcement({ news }) {
         </a>
       </div>
       <div className="w-full">
-        {data.slice(0 + (page - 1) * 10, 10 + (page - 1) * 10).map((item) => (
+        {news.slice(0 + (page - 1) * 10, 10 + (page - 1) * 10).map((item) => (
           <NewsItem key={item.title} data={item} type={"announcement"} />
         ))}
       </div>
@@ -117,7 +112,7 @@ function Announcement({ news }) {
           <FontAwesomeIcon
             icon={faAngleRight}
             color={
-              page === parseInt(data.length / 10) + 1 ? "#c8c8c8" : "#33333"
+              page === parseInt(news.length / 10) + 1 ? "#c8c8c8" : "#33333"
             }
           />
         </a>
