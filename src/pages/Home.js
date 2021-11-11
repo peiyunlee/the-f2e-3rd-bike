@@ -9,7 +9,7 @@ import main from "../assets/main.png";
 import bike from "../assets/icon/bike.png";
 import timeline from "../assets/icon/timeline.png";
 
-function Home({ news }) {
+function Home({ news_announcement,news_activity }) {
   return (
     <div className="pb-16">
       <div className="relative h-full">
@@ -47,7 +47,7 @@ function Home({ news }) {
       <div className="section grid grid-cols-1 justify-items-center gap-10">
         <h3>最新公告</h3>
         <div className="w-full max-w-screen-xl px-10">
-          {news.slice(0, 5).map((item,idx) => (
+          {news_announcement.map((item,idx) => (
             <NewsItem key={`news-announcement-${idx}`}  data={item} type={"announcement"} />
           ))}
         </div>
@@ -61,9 +61,7 @@ function Home({ news }) {
       <div className="section grid grid-cols-1 justify-items-center gap-10">
         <h3>近期活動</h3>
         <div className="w-full max-w-screen-xl px-10">
-          {news
-            .filter((item) => item.type === "活動資訊")
-            .slice(0, 5)
+          {news_activity
             .map((item,idx) => (
               <NewsItem key={`news-activity-${idx}`} data={item} type={"activity"} />
             ))}

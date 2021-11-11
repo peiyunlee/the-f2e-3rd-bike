@@ -22,6 +22,10 @@ function Announcement({ news }) {
     else setpage(1);
   }, [location]);
 
+  useEffect(()=>{
+    setdata(news)
+  },[])
+
   const _renderPageBtn = () => {
     let list = [];
     list.push(
@@ -125,7 +129,7 @@ function Announcement({ news }) {
       </div>
       <div className="w-full px-10">
         {data.slice(0 + (page - 1) * 10, 10 + (page - 1) * 10).map((item) => (
-          <NewsItem key={item.title} data={item} type={"announcement"} />
+          <NewsItem key={item.id} data={item} type={"announcement"} />
         ))}
       </div>
       <div>
