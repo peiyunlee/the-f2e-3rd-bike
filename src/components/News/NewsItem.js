@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function NewsItem({ data, type }) {
   return (
-    <Link to={`/news/detail/${data.id}`} className="group newsitem hover:border-green-hover">
+    <Link to={`/news/detail/${type}/${data.id}`} className="group newsitem hover:border-green-hover">
       <div className="grid grid-flow-col gap-10 mr-20 items-center">
         <div className="mr-10 text-gray-default">
           {type === "announcement" ? data.type : data.city}

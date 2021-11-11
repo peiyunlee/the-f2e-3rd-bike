@@ -22,18 +22,14 @@ function Announcement({ news }) {
     else setpage(1);
   }, [location]);
 
-  useEffect(()=>{
-    setdata(news)
-  },[])
-
   const _renderPageBtn = () => {
     let list = [];
     list.push(
       <NavLink
-        key={`/news/announcement/`}
+        key={`/news/announcement`}
         className="text-black font-bold mx-2"
         exact
-        to={`/news/announcement/`}
+        to={`/news/announcement`}
         activeStyle={{
           color: "#F8B714",
         }}
@@ -44,10 +40,10 @@ function Announcement({ news }) {
     for (let i = 2; i <= data.length / 10 + 1; i++) {
       list.push(
         <NavLink
-          key={`/news/announcement/${i}/`}
+          key={`/news/announcement/${i}`}
           className="text-black font-bold mx-2"
           exact
-          to={`/news/announcement/${i}/`}
+          to={`/news/announcement/${i}`}
           activeStyle={{
             color: "#F8B714",
           }}
@@ -61,10 +57,10 @@ function Announcement({ news }) {
 
   const _clickPageBtn = (type, newpage = 0) => {
     if (type === "plus" && page + 1 <= parseInt(data.length / 10) + 1) {
-      history.push("/news/announcement/" + (page + 1)+'/');
+      history.push("/news/announcement/" + (page + 1));
     } else if (type === "minus" && page - 1 >= 1) {
       if (page - 1 === 1) history.push("/news/announcement");
-      else history.push("/news/announcement/" + (page - 1)+'/');
+      else history.push("/news/announcement/" + (page - 1));
     }
   };
 

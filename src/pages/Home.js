@@ -11,7 +11,7 @@ import timeline from "../assets/icon/timeline.png";
 
 function Home({ news_announcement,news_activity }) {
   return (
-    <div className="pb-16">
+    <div className="pb-20">
       <div className="relative h-full">
         <img className="w-screen" src={main} alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
@@ -31,14 +31,14 @@ function Home({ news_announcement,news_activity }) {
       <div className="pt-16 pb-12 grid grid-flow-col gap-20 justify-center">
         <Link
           className="shadow-md bg-green-default py-4 flex items-center justify-center w-96 rounded hover:bg-green-hover"
-          to="/route/district/"
+          to="/route/district"
         >
           <img className="w-10" src={timeline} alt="" />
           <span className="font-bold text-white text-2xl ml-6 mr-4">自行車路線</span>
         </Link>
         <Link
           className="shadow-md bg-yellow-default py-4 flex items-center justify-center w-96 rounded hover:bg-yellow-hover"
-          to="/station/"
+          to="/station"
         >
           <img className="w-10" src={bike} alt="" />
           <span className="font-bold text-white text-2xl ml-6 mr-4">單車租借</span>
@@ -53,7 +53,7 @@ function Home({ news_announcement,news_activity }) {
         </div>
         <Link
           className="flex btn bg-green-default text-white hover:bg-green-hover"
-          to="/news/announcement/"
+          to="/news/announcement"
         >
           更多最新公告
         </Link>
@@ -68,7 +68,7 @@ function Home({ news_announcement,news_activity }) {
         </div>
         <Link
           className="flex btn bg-green-default text-white hover:bg-green-hover"
-          to="/news/activity/"
+          to="/news/activity"
         >
           更多活動資訊
         </Link>

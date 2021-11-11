@@ -22,31 +22,31 @@ function Footer() {
         <div className="grid grid-flow-col items-start gap-12 pr-16">
           <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">最新消息</div>
-            <Link className="font-ch tracking-wide" to="/news/announcement/">
+            <Link className="font-ch tracking-wide" to="/news/announcement">
               最新公告
             </Link>
-            <Link className="font-ch tracking-wide" to="/news/activity/">
+            <Link className="font-ch tracking-wide" to="/news/activity">
               活動資訊
             </Link>
           </div>
           <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">自行車路線</div>
-            <Link className="font-ch tracking-wide" to="/route/district/">
+            <Link className="font-ch tracking-wide" to="/route/district">
               區域路線
             </Link>
-            <Link className="font-ch tracking-wide" to="/route/store/">
+            <Link className="font-ch tracking-wide" to="/route/store">
               常用路線
             </Link>
           </div>
           <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">單車租借</div>
-            <Link className="font-ch tracking-wide" to="/station/">
+            <Link className="font-ch tracking-wide" to="/station">
               單車租借
             </Link>
           </div>
           <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">騎乘小叮嚀</div>
-            <Link className="font-ch tracking-wide" to="/safety/">
+            <Link className="font-ch tracking-wide" to="/safety">
               騎乘小叮嚀
             </Link>
           </div>

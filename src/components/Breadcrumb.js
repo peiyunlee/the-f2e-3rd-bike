@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../utils/routes";
-import data_news from '../assets/json/news.json'
+import news from "../assets/newSort";
 
 const flattenArr = (arr) =>
   arr.reduce(function (prev, item) {
@@ -19,29 +19,49 @@ function Breadcrumb() {
 
   const _RenderBreadItem = () => {
     let list = [];
-    location.pathname
-      .split("/")
-      .slice(0, 3)
-      .forEach((ele, idx) => {
-        if (idx === 0)
-          list.push(
-            <NavLink
-              key={"/"}
-              exact
-              to={"/"}
-              className="mx-2.5 text-sm hover:text-green-hover"
-              activeClassName="text-green-default"
-            >
-              首頁
-            </NavLink>
-          );
-        else {
-          const index = flattenRoutes.findIndex(
-            (route) => route.pathname === ele
-          );
+    let isDetail = false;
+    const pathNameArr = location.pathname.split("/");
+    pathNameArr.slice(1, 4).forEach((ele,idx) => {
+      let pathName = "";
+      let toPath = "";
+      let breadcrumbName = "";
+      if (ele !== "detail") {
+        const index = flattenRoutes.findIndex(
+          (route) => route.pathname === ele
+        );
+
+        pathName = flattenRoutes[index].pathname;
+        toPath = flattenRoutes[index].path;
+        breadcrumbName = flattenRoutes[index].breadcrumbName;
+
+        list.push(
+          <FontAwesomeIcon
+            key={`icon-${pathName}`}
+            icon={faAngleRight}
+            color="#333333"
+            size="sm"
+          />
+        );
+        list.push(
+          <NavLink
+            key={`navlink-${pathName}`}
+            exact
+            to={toPath}
+            className="mx-2.5 text-sm hover:text-green-hover"
+            activeClassName="text-green-default"
+          >
+            {breadcrumbName}
+          </NavLink>
+        );
+
+        if (isDetail && idx === 2) {
+          pathName = `detail-${pathNameArr[4]}`;
+          toPath = location;
+          breadcrumbName = news[pathNameArr[4]].title;
+
           list.push(
             <FontAwesomeIcon
-              key={`icon-${flattenRoutes[index].path}`}
+              key={`icon-${pathName}`}
               icon={faAngleRight}
               color="#333333"
               size="sm"
@@ -49,22 +69,32 @@ function Breadcrumb() {
           );
           list.push(
             <NavLink
-              key={`navlink-${flattenRoutes[index].path}`}
+              key={`navlink-${pathName}`}
               exact
-              to={flattenRoutes[index].path}
+              to={toPath}
               className="mx-2.5 text-sm hover:text-green-hover"
               activeClassName="text-green-default"
             >
-              {flattenRoutes[index].breadcrumbName}
+              {breadcrumbName}
             </NavLink>
           );
         }
-      });
+      } else isDetail = true;
+    });
     return list;
   };
 
   return (
     <div className="px-10 pt-6 flex items-center text-black">
+      <NavLink
+        key={"/"}
+        exact
+        to={"/"}
+        className="mx-2.5 text-sm hover:text-green-hover"
+        activeClassName="text-green-default"
+      >
+        首頁
+      </NavLink>
       {_RenderBreadItem()}
     </div>
   );

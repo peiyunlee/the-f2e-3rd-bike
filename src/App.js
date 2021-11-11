@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
-import data_news from "./assets/json/news.json";
+import data_news from "./assets/newSort";
 
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -13,13 +13,6 @@ import RouteMap from "./pages/RouteMap";
 import News from "./pages/News";
 
 import { MLStoreProvider } from "./store/mapLayer";
-import { data } from "autoprefixer";
-
-data_news.sort(function (a, b) {
-  const one = a.newsTime.split(" / ").join("");
-  const two = b.newsTime.split(" / ").join("");
-  return two - one;
-});
 
 let data_announcement = []
 let data_activity = []
@@ -42,14 +35,14 @@ function App() {
             <Home news_announcement={data_announcement.slice(0, 5)} news_activity={data_activity.slice(0, 5)} />
             <Footer />
           </Route>
-          <Redirect exact from="/news/" to="/news/announcement/" />
-          <Route path="/news/">
+          <Redirect exact from="/news" to="/news/announcement" />
+          <Route path="/news">
             <Breadcrumb />
             <News news_activity={data_activity} news_announcement={data_announcement} />
             <Footer />
           </Route>
-          <Redirect exact from="/route/" to="/route/district" />
-          <Route path="/route/">
+          <Redirect exact from="/route" to="/route/district" />
+          <Route path="/route">
             <MLStoreProvider>
               <RouteMap />
             </MLStoreProvider>

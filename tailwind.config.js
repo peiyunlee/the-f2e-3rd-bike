@@ -22,6 +22,7 @@ module.exports = {
       },
       red: "#EB5757",
       gray: { default: "#828282", light: "#C8C8C8", lighter: "#EDEDED" },
+      blue: "#1a73e8"
     },
     fontFamily: {
       ch: ["Noto Sans TC", "sans-serif"],

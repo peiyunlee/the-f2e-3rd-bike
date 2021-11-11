@@ -18,7 +18,7 @@ function Header() {
         <div className="group ml-8 w-max h-header flex items-center relative">
           <NavLink
             className="nav-link group-hover:nav-link-hover"
-            to="/news/"
+            to="/news"
             activeStyle={{
               borderColor: "#0D706D",
             }}
@@ -28,7 +28,7 @@ function Header() {
           <div className="hidden group-hover:block absolute top-16 z-50 bg-green-default rounded translate-x-50-y-75 right-1/2">
             <NavLink
               className="nav-link group-hover:nav-link-hover border-0 text-white font-medium p-2 hover:text-yellow-disable"
-              to="/news/announcement/"
+              to="/news/announcement"
               activeStyle={{
                 color: "#FEF2D5",
               }}
@@ -38,7 +38,7 @@ function Header() {
             <div className="border-b-2 border-white w-5/6 mx-auto"></div>
             <NavLink
               className="nav-link group-hover:nav-link-hover border-0 text-white font-medium p-2 hover:text-yellow-disable"
-              to="/news/activity/"
+              to="/news/activity"
               activeStyle={{
                 color: "#FEF2D5",
               }}
@@ -50,7 +50,7 @@ function Header() {
         <div className="group ml-8 w-max h-header flex items-center relative">
           <NavLink
             className="nav-link group-hover:nav-link-hover"
-            to="/route/"
+            to="/route"
             activeStyle={{
               borderColor: "#0D706D",
             }}
@@ -60,7 +60,7 @@ function Header() {
           <div className="hidden group-hover:block absolute top-16 z-50 bg-green-default rounded translate-x-50-y-75 right-1/2">
             <NavLink
               className="nav-link group-hover:nav-link-hover border-0 text-white font-medium p-2 hover:text-yellow-disable"
-              to="/route/district/"
+              to="/route/district"
               activeStyle={{
                 color: "#FEF2D5",
               }}
@@ -70,7 +70,7 @@ function Header() {
             <div className="border-b-2 border-white w-5/6 mx-auto"></div>
             <NavLink
               className="nav-link group-hover:nav-link-hover border-0 text-white font-medium p-2 hover:text-yellow-disable"
-              to="/route/store/"
+              to="/route/store"
               activeStyle={{
                 color: "#FEF2D5",
               }}
@@ -82,7 +82,7 @@ function Header() {
         <div className="group ml-8 w-max h-header flex items-center relative">
           <NavLink
             className="nav-link group-hover:nav-link-hover"
-            to="/station/"
+            to="/station"
             activeStyle={{
               borderColor: "#0D706D",
             }}
@@ -93,7 +93,7 @@ function Header() {
         <div className="group ml-8 w-max h-header flex items-center relative">
           <NavLink
             className="nav-link group-hover:nav-link-hover"
-            to="/safety/"
+            to="/safety"
             activeStyle={{
               borderColor: "#0D706D",
             }}

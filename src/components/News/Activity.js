@@ -26,10 +26,10 @@ function Activity({ news }) {
     let list = [];
     list.push(
       <NavLink
-        key={`/news/activity/`}
+        key={`/news/activity`}
         className="text-black font-bold mx-2"
         exact
-        to={`/news/activity/`}
+        to={`/news/activity`}
         activeStyle={{
           color: "#F8B714",
         }}
@@ -40,10 +40,10 @@ function Activity({ news }) {
     for (let i = 2; i <= data.length / 10 + 1; i++) {
       list.push(
         <NavLink
-          key={`/news/activity/${i}/`}
+          key={`/news/activity/${i}`}
           className="text-black font-bold mx-2"
           exact
-          to={`/news/activity/${i}/`}
+          to={`/news/activity/${i}`}
           activeStyle={{
             color: "#F8B714",
           }}
@@ -57,10 +57,10 @@ function Activity({ news }) {
 
   const _ClickPageBtn = (type, newpage = 0) => {
     if (type === "plus" && page + 1 <= parseInt(data.length / 10) + 1) {
-      history.push("/news/activity/" + (page + 1)+'/');
+      history.push("/news/activity/" + (page + 1));
     } else if (type === "minus" && page - 1 >= 1) {
-      if (page - 1 === 1) history.push("/news/activity/");
-      else history.push("/news/activity/" + (page - 1)+'/');
+      if (page - 1 === 1) history.push("/news/activity");
+      else history.push("/news/activity/" + (page - 1));
     }
   };
 
