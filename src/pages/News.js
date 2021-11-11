@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router";
 import Announcement from "../components/News/Announcement";
 import Activity from "../components/News/Activity";
+import NewsInfo from "../components/News/NewsInfo";
 
 function News({ news_activity, news_announcement }) {
   return (
@@ -11,6 +12,9 @@ function News({ news_activity, news_announcement }) {
         </Route>
         <Route path="/news/activity/">
           <Activity news={news_activity} />
+        </Route>
+        <Route path="/news/annoucement/detail">
+          <NewsInfo news={news_activity} />
         </Route>
       </Switch>
     </div>
