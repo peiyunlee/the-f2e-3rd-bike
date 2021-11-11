@@ -23,6 +23,13 @@ const routes = [
             footer: true,
             breadcrumb: true,
           },
+          {
+            path: "/news/detail/:id",
+            pathname: "detail",
+            breadcrumbName: "消息介紹",
+            footer: true,
+            breadcrumb: true,
+          },
         ],
       },
       {

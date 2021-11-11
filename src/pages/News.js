@@ -13,8 +13,8 @@ function News({ news_activity, news_announcement }) {
         <Route path="/news/activity/">
           <Activity news={news_activity} />
         </Route>
-        <Route path="/news/annoucement/detail">
-          <NewsInfo news={news_activity} />
+        <Route path="/news/detail/:id">
+          <NewsInfo />
         </Route>
       </Switch>
     </div>

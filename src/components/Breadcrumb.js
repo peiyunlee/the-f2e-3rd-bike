@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../utils/routes";
+import data_news from '../assets/json/news.json'
 
 const flattenArr = (arr) =>
   arr.reduce(function (prev, item) {
