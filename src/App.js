@@ -26,7 +26,7 @@ data_news.forEach((ele) => {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App w-screen">
       <BrowserRouter>
         <ScrollToTop />
         <Header />

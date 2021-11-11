@@ -14,7 +14,7 @@ function Header() {
         <h1 className="font-en tracking-widest">TAIWAN BIKE</h1>
         <h1>台灣自行車資訊網</h1>
       </NavLink>
-      <div className="flex relative">
+      <div className="hidden lg:flex relative">
         <div className="group ml-8 w-max h-header flex items-center relative">
           <NavLink
             className="nav-link group-hover:nav-link-hover"
@@ -106,6 +106,9 @@ function Header() {
             登入
           </a>
         </div>
+      </div>
+      <div className="flex lg:hidden relative">
+        
       </div>
     </div>
   );

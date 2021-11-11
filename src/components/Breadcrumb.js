@@ -85,12 +85,12 @@ function Breadcrumb() {
   };
 
   return (
-    <div className="px-10 pt-6 flex items-center text-black">
+    <div className="px-20 pt-6 flex items-center text-black max-w-7xl">
       <NavLink
         key={"/"}
         exact
         to={"/"}
-        className="mx-2.5 text-sm hover:text-green-hover"
+        className="mr-2.5 text-sm hover:text-green-hover"
         activeClassName="text-green-default"
       >
         首頁

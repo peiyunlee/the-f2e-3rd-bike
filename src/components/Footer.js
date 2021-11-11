@@ -19,7 +19,7 @@ function Footer() {
             ©2021 , Taiwan Bike. All Rights Reserved.
           </div>
         </div>
-        <div className="grid grid-flow-col items-start gap-12 pr-16">
+        <div className="hidden lg:grid grid-flow-col items-start gap-12 pr-16">
           <div className="grid justify-items-start gap-4">
             <div className="font-bold font-ch tracking-wide">最新消息</div>
             <Link className="font-ch tracking-wide" to="/news/announcement">

@@ -82,10 +82,14 @@ body {
     @apply rounded mr-4 mt-0.5 text-green-default cursor-pointer;
   }
   .newsitem {
-    @apply border-b border-gray-light flex items-center justify-between py-5 px-12 font-bold;
+    @apply border-b border-gray-light flex items-center justify-between py-5 px-10 font-bold;
   }
   .section {
     @apply py-16 px-10;
+  }
+  .home-main-img {
+    min-height: 480px;
+    min-width: 1440px;
   }
 }
 
@@ -118,5 +122,8 @@ body {
   }
   .translate-x-50-y-75 {
     transform: translate(50%, 0%);
+  }
+  .grid-template-columns-min-content {
+    grid-template-columns: min-content;
   }
 }

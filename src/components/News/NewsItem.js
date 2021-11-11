@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 function NewsItem({ data, type }) {
   return (
     <Link to={`/news/detail/${type}/${data.id}`} className="group newsitem hover:border-green-hover">
-      <div className="grid grid-flow-col gap-10 mr-20 items-center">
-        <div className="mr-10 text-gray-default">
+      <div className="grid lg:grid-flow-col lg:grid-rows-1 lg:grid-cols-none grid-template-columns-min-content mr-16 lg:items-center">
+        <div className="lg:mr-16 mr-10 lg:mb-0 mb-3 text-gray-default lg:w-20 w-max lg:text-center text-left">
           {type === "announcement" ? data.type : data.city}
         </div>
-        <div className="mr-5 text-gray-default w-48 text-left">
+        <div className={`text-gray-default lg:w-48 w-max text-left ${type === "announcement" ? 'mr-16' : 'mr-16'} `}>
           {type === "announcement" ? data.newsTime : data.activityTime}
         </div>
-        <div className="group-hover:text-green-hover text-left">
+        <div className="group-hover:text-green-hover text-justify lg:grid-cols-none col-span-2">
           {data.title}
         </div>
       </div>
