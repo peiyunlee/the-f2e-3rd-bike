@@ -85,7 +85,7 @@ function Breadcrumb() {
   };
 
   return (
-    <div className="mt-header lg:px-20 md:px-10 px-5 pt-6 flex items-center text-black max-w-7xl">
+    <div className="mt-header md:px-10 px-5 pt-6 flex items-center text-black max-w-7xl m-auto">
       <NavLink
         key={"/"}
         exact
