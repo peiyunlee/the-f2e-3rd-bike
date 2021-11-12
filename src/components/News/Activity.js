@@ -90,10 +90,10 @@ function Activity({ news }) {
   };
 
   return (
-    <div className="w-full max-w-7xl px-10 grid gap-10 justify-items-center section">
+    <div className="w-full max-w-7xl md:px-10 grid gap-10 justify-items-center section">
       <h2>活動資訊</h2>
-      <div className="grid grid-flow-col gap-10">
-        <div className="grid grid-flow-col gap-10 justify-items-start items-center">
+      <div className="grid md:grid-flow-col smDefault:grid-cols-1 md:gap-10 gap-y-5 gap-x-10 justify-items-center">
+        <div className="grid grid-flow-col md:gap-10 gap-5 justify-items-start items-center">
           <span className="font-bold">選擇地區</span>
           <select
             className="input-select w-32"
@@ -110,7 +110,7 @@ function Activity({ news }) {
             ))}
           </select>
         </div>
-        <div className="grid grid-flow-col gap-10 justify-items-start items-center">
+        <div className="grid grid-flow-col md:gap-10 gap-5 justify-items-start items-center">
           <span className="font-bold">選擇時間</span>
           <select
             className="input-select w-32"
@@ -125,13 +125,13 @@ function Activity({ news }) {
           </select>
         </div>
         <a
-          className="btn bg-yellow-default text-white w-full hover:bg-yellow-hover"
+          className="btn bg-yellow-default text-white md:w-full w-max smDefault:col-span-2 hover:bg-yellow-hover"
           onClick={_ClickSearchBtn}
         >
           查詢
         </a>
       </div>
-      <div className="w-full px-10">
+      <div className="w-full lg:px-10">
         {data.slice(0 + (page - 1) * 10, 10 + (page - 1) * 10).map((item) => (
           <NewsItem key={item.title} data={item} type={"activity"} />
         ))}

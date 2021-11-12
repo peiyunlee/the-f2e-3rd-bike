@@ -139,22 +139,22 @@ function Header() {
         <div className="grid md:grid-flow-col md:grid-cols-none grid-cols-2 gap-y-10 gap-x-10 md:max-w-full max-w-lg">
           <div className="grid gap-3 justify-start grid-rows-3">
             <span className="font-bold text-left tracking-wide md:text-xl">最新消息</span>
-            <Link to='/news/announcement' className="text-left tracking-wide hover:text-green-hover">最新公告</Link>
-            <Link to='/news/activity' className="text-left tracking-wide hover:text-green-hover">活動資訊</Link>
+            <Link onClick={_HndleClickBtn} to='/news/announcement' className="text-left tracking-wide hover:text-green-hover">最新公告</Link>
+            <Link onClick={_HndleClickBtn} to='/news/activity' className="text-left tracking-wide hover:text-green-hover">活動資訊</Link>
           </div>
           <div className="grid gap-3 justify-start grid-rows-3">
             <span className="font-bold text-left tracking-wide md:text-xl">自行車路線</span>
-            <Link to='/route/district' className="text-left tracking-wide hover:text-green-hover">區域路線</Link>
-            {/* <Link to='/route/store' className="text-left tracking-wide hover:text-green-hover">常用路線</Link> */}
+            <Link onClick={_HndleClickBtn} to='/route/district' className="text-left tracking-wide hover:text-green-hover">區域路線</Link>
+            {/* <Link onClick={_HndleClickBtn} to='/route/store' className="text-left tracking-wide hover:text-green-hover">常用路線</Link> */}
           </div>
           <div className="grid gap-3 justify-start grid-rows-3">
             <span className="font-bold text-left tracking-wide md:text-xl">單車租借</span>
-            <Link to='/station/rent' className="text-left tracking-wide hover:text-green-hover">站點資訊</Link>
-            <Link to='/station/store' className="text-left tracking-wide hover:text-green-hover">常用路線</Link>
+            <Link onClick={_HndleClickBtn} to='/station/rent' className="text-left tracking-wide hover:text-green-hover">站點資訊</Link>
+            <Link onClick={_HndleClickBtn} to='/station/store' className="text-left tracking-wide hover:text-green-hover">常用路線</Link>
           </div>
           <div className="grid gap-3 justify-start grid-rows-3">
             <span className="font-bold text-left tracking-wide md:text-xl">騎乘小叮嚀</span>
-            <Link to='/safety' className="text-left tracking-wide hover:text-green-hover">騎乘小叮嚀</Link>
+            <Link onClick={_HndleClickBtn} to='/safety' className="text-left tracking-wide hover:text-green-hover">騎乘小叮嚀</Link>
           </div>
         </div>
       </div>

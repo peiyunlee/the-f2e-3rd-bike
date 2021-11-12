@@ -47,7 +47,7 @@ function Breadcrumb() {
             key={`navlink-${pathName}`}
             exact
             to={toPath}
-            className="mx-2.5 text-sm hover:text-green-hover"
+            className="mx-2.5 text-sm hover:text-green-hover min-w-max"
             activeClassName="text-green-default"
           >
             {breadcrumbName}
@@ -72,7 +72,7 @@ function Breadcrumb() {
               key={`navlink-${pathName}`}
               exact
               to={toPath}
-              className="mx-2.5 text-sm hover:text-green-hover"
+              className="mx-2.5 text-sm hover:text-green-hover min-w-max"
               activeClassName="text-green-default"
             >
               {breadcrumbName}
@@ -85,12 +85,12 @@ function Breadcrumb() {
   };
 
   return (
-    <div className="px-20 pt-6 flex items-center text-black max-w-7xl">
+    <div className="mt-header lg:px-20 md:px-10 px-5 pt-6 flex items-center text-black max-w-7xl">
       <NavLink
         key={"/"}
         exact
         to={"/"}
-        className="mr-2.5 text-sm hover:text-green-hover"
+        className="mr-2.5 text-sm hover:text-green-hover min-w-max"
         activeClassName="text-green-default"
       >
         首頁
