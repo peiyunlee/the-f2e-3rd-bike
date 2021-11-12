@@ -4,10 +4,10 @@ import logo from "../assets/logo.png";
 function Footer() {
   return (
     <div className="bg-green-bg">
-      <div className="flex px-10 py-7 justify-between">
+      <div className="flex px-10 py-7 md:justify-between justify-center">
         <div>
           <NavLink
-            className="w-max grid grid-col-2 grid-rows-2 grid-flow-col shadow-text mb-5"
+            className="m-auto w-max grid grid-col-2 grid-rows-2 grid-flow-col shadow-text mb-5"
             to="/"
             activeClassName=""
           >

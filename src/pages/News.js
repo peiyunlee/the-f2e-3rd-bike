@@ -5,7 +5,7 @@ import NewsInfo from "../components/News/NewsInfo";
 
 function News({ news_activity, news_announcement }) {
   return (
-    <div className="flex justify-center text-black items-start min-height-75vh pb-20">
+    <div className="mt-header flex justify-center text-black items-start min-height-75vh pb-20">
       <Switch>
         <Route path="/news/announcement">
           <Announcement news={news_announcement} />

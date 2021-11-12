@@ -39,7 +39,7 @@
 
 //   return (
 //     <div className="flex flex-col min-h-0 w-80 items-start">
-//       <h2 className="mb-3 text-2xl">常用路線</h2>
+//       <h2 className="mb-3 text-xl">常用路線</h2>
 //       <div className="flex flex-col items-start w-full h-full flex-grow min-h-0">
 //         <ResultList result={result} />
 //       </div>

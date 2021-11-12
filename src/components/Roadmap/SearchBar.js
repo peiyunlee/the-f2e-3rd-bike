@@ -32,7 +32,7 @@ function SearchBar() {
 
   return (
     <div className="bg-white max-h-full p-5 rounded w-80">
-      <h2 className="mb-3 text-2xl">區域路線搜尋</h2>
+      <h2 className="mb-3 text-xl">區域路線搜尋</h2>
       <input
         className="input-text mb-2"
         type="text"
