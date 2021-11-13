@@ -7,7 +7,7 @@ function Roadmap() {
 
   return (
     <div className="Roadmap content-full relative mt-header">
-      <div className="w-max m-0 h-full py-10 px-10 flex absolute z-10 shadow-default">
+      <div className="w-max m-0 py-10 px-10 flex absolute z-10 shadow-default">
           <Route path="/route/district">
             <SearchBar />
           </Route>
