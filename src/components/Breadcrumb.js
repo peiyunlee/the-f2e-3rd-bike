@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../utils/routes";
-import news from "../assets/newSort";
+import { useContext } from "react";
+import { StoreContext } from "../store/newsData";
 
 const flattenArr = (arr) =>
   arr.reduce(function (prev, item) {
@@ -17,11 +18,15 @@ const flattenRoutes = flattenArr(routes);
 function Breadcrumb() {
   let location = useLocation();
 
+  const {
+    state: { news },
+  } = useContext(StoreContext);
+
   const _RenderBreadItem = () => {
     let list = [];
     let isDetail = false;
     const pathNameArr = location.pathname.split("/");
-    pathNameArr.slice(1, 4).forEach((ele,idx) => {
+    pathNameArr.slice(1, 4).forEach((ele, idx) => {
       let pathName = "";
       let toPath = "";
       let breadcrumbName = "";
@@ -30,29 +35,31 @@ function Breadcrumb() {
           (route) => route.pathname === ele
         );
 
-        pathName = flattenRoutes[index].pathname;
-        toPath = flattenRoutes[index].path;
-        breadcrumbName = flattenRoutes[index].breadcrumbName;
+        if (index !== -1) {
+          pathName = flattenRoutes[index].pathname;
+          toPath = flattenRoutes[index].path;
+          breadcrumbName = flattenRoutes[index].breadcrumbName;
 
-        list.push(
-          <FontAwesomeIcon
-            key={`icon-${pathName}`}
-            icon={faAngleRight}
-            color="#333333"
-            size="sm"
-          />
-        );
-        list.push(
-          <NavLink
-            key={`navlink-${pathName}`}
-            exact
-            to={toPath}
-            className="mx-2.5 text-sm hover:text-green-hover min-w-max"
-            activeClassName="text-green-default"
-          >
-            {breadcrumbName}
-          </NavLink>
-        );
+          list.push(
+            <FontAwesomeIcon
+              key={`icon-${pathName}`}
+              icon={faAngleRight}
+              color="#333333"
+              size="sm"
+            />
+          );
+          list.push(
+            <NavLink
+              key={`navlink-${pathName}`}
+              exact
+              to={toPath}
+              className="mx-2.5 text-sm hover:text-green-hover min-w-max"
+              activeClassName="text-green-default"
+            >
+              {breadcrumbName}
+            </NavLink>
+          );
+        }
 
         if (isDetail && idx === 2) {
           pathName = `detail-${pathNameArr[4]}`;

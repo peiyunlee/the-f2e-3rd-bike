@@ -8,10 +8,6 @@ import { StoreContext } from "../store/mapLayer";
 
 function Roadmap() {
 
-  const {
-    state: { routes, popup,mapCenterPos },
-  } = useContext(StoreContext);
-
   return (
     <div className="Roadmap content-full relative mt-header">
       <div className="w-max m-0 h-full py-10 px-10 flex absolute z-10 shadow-default">
@@ -19,7 +15,7 @@ function Roadmap() {
             <SearchBar />
           </Route>
       </div>
-      <Map routes={routes} popup={popup} mapCenterPos={mapCenterPos} />
+      <Map />
     </div>
   );
 }

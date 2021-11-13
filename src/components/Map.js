@@ -11,8 +11,8 @@ import { setPopup } from "../actions/mapLayer";
 
 import "./map.css";
 
-function Map({ routes, popup, mapCenterPos }) {
-  const { dispatch } = useContext(StoreContext);
+function Map() {
+  const { state: { routes, popup,mapCenterPos }, dispatch } = useContext(StoreContext);
   const [centerPos, setcenterPos] = useState(mapCenterPos);
 
   let bounds = [];

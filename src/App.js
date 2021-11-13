@@ -1,8 +1,6 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
-import data_news from "./assets/newSort";
-
 import ScrollToTop from "./components/ScrollToTop";
 
 import Header from "./components/Header";
@@ -13,16 +11,7 @@ import RouteMap from "./pages/RouteMap";
 import News from "./pages/News";
 
 import { MLStoreProvider } from "./store/mapLayer";
-
-let data_announcement = []
-let data_activity = []
-
-data_news.forEach((ele) => {
-  if (ele.type === "活動資訊")
-    data_activity.push(ele)
-  else
-    data_announcement.push(ele)
-})
+import { NewsStoreProvider } from "./store/newsData";
 
 function App() {
   return (
@@ -32,13 +21,17 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Home news_announcement={data_announcement.slice(0, 5)} news_activity={data_activity.slice(0, 5)} />
+            <NewsStoreProvider>
+              <Home />
+            </NewsStoreProvider>
             <Footer />
           </Route>
           <Redirect exact from="/news" to="/news/announcement" />
           <Route path="/news">
-            <Breadcrumb />
-            <News news_activity={data_activity} news_announcement={data_announcement} />
+            <NewsStoreProvider>
+              <Breadcrumb />
+              <News />
+            </NewsStoreProvider>
             <Footer />
           </Route>
           <Redirect exact from="/route" to="/route/district" />
