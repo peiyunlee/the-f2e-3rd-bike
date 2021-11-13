@@ -1,10 +1,7 @@
-import { useContext } from "react";
 import { Route } from "react-router-dom";
 
 import Map from "../components/Map";
 import SearchBar from "../components/Roadmap/SearchBar";
-
-import { StoreContext } from "../store/mapLayer";
 
 function Roadmap() {
 
