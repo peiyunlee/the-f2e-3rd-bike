@@ -46,6 +46,7 @@ function Breadcrumb() {
               icon={faAngleRight}
               color="#333333"
               size="sm"
+              className="mx-2.5"
             />
           );
           list.push(
@@ -53,7 +54,7 @@ function Breadcrumb() {
               key={`navlink-${pathName}`}
               exact
               to={toPath}
-              className="mx-2.5 text-sm hover:text-green-hover min-w-max"
+              className="text-sm hover:text-green-hover min-w-max"
               activeClassName="text-green-default"
             >
               {breadcrumbName}
@@ -72,6 +73,7 @@ function Breadcrumb() {
               icon={faAngleRight}
               color="#333333"
               size="sm"
+              className="mx-2.5"
             />
           );
           list.push(
@@ -79,7 +81,7 @@ function Breadcrumb() {
               key={`navlink-${pathName}`}
               exact
               to={toPath}
-              className="mx-2.5 text-sm hover:text-green-hover min-w-max"
+              className="text-sm hover:text-green-hover text-left"
               activeClassName="text-green-default"
             >
               {breadcrumbName}
@@ -92,12 +94,12 @@ function Breadcrumb() {
   };
 
   return (
-    <div className="mt-header md:px-10 px-5 pt-6 flex items-center text-black max-w-7xl m-auto">
+    <div className="mt-header md:px-10 px-5 pt-6 flex items-center flex-wrap text-black max-w-7xl m-auto w-full">
       <NavLink
         key={"/"}
         exact
         to={"/"}
-        className="mr-2.5 text-sm hover:text-green-hover min-w-max"
+        className="text-sm hover:text-green-hover min-w-max"
         activeClassName="text-green-default"
       >
         首頁

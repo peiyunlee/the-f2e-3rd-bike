@@ -68,9 +68,9 @@ function NewsInfo() {
   };
 
   return (
-    <div className="w-full max-w-7xl px-10 grid gap-10 section justify-items-start">
-      <div className="flex items-end">
-        <div className="mr-10 px-5 py-2 bg-yellow-default text-white w-max">
+    <div className="w-full max-w-7xl md:px-10 px-5 grid gap-10 section justify-items-start">
+      <div className="flex md:items-end md:flex-row flex-col">
+        <div className="mr-10 px-5 py-2 bg-yellow-default text-white w-max md:mb-0 mb-5">
           {news[id].type}
         </div>
         <div>發布時間：{news[id].newsTime}</div>
