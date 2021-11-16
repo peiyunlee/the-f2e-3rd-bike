@@ -1,14 +1,19 @@
-import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
-
+import { MapContainer, Marker, TileLayer, Popup, useMap } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 // import "../map.css";
 import { StoreContext } from "../../store/stationMap";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { iconMore, iconLess, iconZero, iconNull } from "./MarkerIcon";
 
 function StationMap({ isRent }) {
   const {
     state: { stations, mapCenterPos },
   } = useContext(StoreContext);
+  const [centerPos, setcenterPos] = useState(mapCenterPos);
+
+  useEffect(() => {
+    setcenterPos(mapCenterPos);
+  }, [mapCenterPos]);
 
   const _renderMarkers = () => {
     let list = [];
@@ -59,7 +64,11 @@ function StationMap({ isRent }) {
       }
 
       list.push(
-        <Marker position={position} icon={icon}>
+        <Marker
+          position={position}
+          icon={icon}
+          key={`marker-${item.StationUID}`}
+        >
           <Popup position={position} autoClose={true} closeButton={true}>
             <div className="font-bold font-ch text-lg">
               {item.StationName.Zh_tw}
@@ -86,6 +95,15 @@ function StationMap({ isRent }) {
     return list;
   };
 
+  function ChangeMap({ center }) {
+    let map = useMap();
+    if (center !== undefined) {
+      map.panTo(center);
+      setcenterPos(undefined)
+    }
+    return null;
+  }
+
   return (
     <MapContainer
       style={{
@@ -93,15 +111,16 @@ function StationMap({ isRent }) {
         height: "100%",
         zIndex: "0",
       }}
-      center={[25.09108, 121.5598]}
+      center={centerPos}
       zoom={8}
-      closePopupOnClick={false}
+      closePopupOnClick={true}
     >
+      <ChangeMap center={centerPos} />
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {_renderMarkers()}
+      <MarkerClusterGroup>{_renderMarkers()}</MarkerClusterGroup>
     </MapContainer>
   );
 }

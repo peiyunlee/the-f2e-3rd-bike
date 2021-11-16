@@ -1,10 +1,10 @@
 import axios from "../api";
 
 const baseUrl_Availability = `https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/`;
-const baseUrl_Param_Availability = `?$top=30&$format=JSON`;
+const baseUrl_Param_Availability = `?$format=JSON`;
 
 const baseUrl_info = `https://ptx.transportdata.tw/MOTC/v2/Bike/Station/`;
-const baseUrl_Param_info = `?$top=30&$format=JSON`;
+const baseUrl_Param_info = `?$format=JSON`;
 
 export const getStationInfo = async (city) => {
   try {

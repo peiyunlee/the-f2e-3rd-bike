@@ -3,25 +3,29 @@ import { useState, useContext } from "react";
 import city_data from "../../assets/json/city.json";
 import { getStationInfo } from "../../api/stationApi";
 import { StoreContext } from "../../store/stationMap";
-import { setMapCenterPos, setPopup, setStations } from "../../actions/stationMap";
+import { setMapCenterPos, setStations } from "../../actions/stationMap";
 
 function SearchBar() {
   const { dispatch } = useContext(StoreContext);
   const [town, settown] = useState(city_data[0].Town);
-  const [input_city, setinput_city] = useState({ name: "Taipei", idx: 0 });
+  const [input_city, setinput_city] = useState({ name: "選擇", idx: -1 });
 
   const _HandleSelectCity = (event) => {
-    const idx = city_data.findIndex((item) => item.City === event.target.value);
-    setinput_city({ name: event.target.value, idx: idx });
-    settown(city_data[idx].Town);
+    if (event.target.value !== "選擇") {
+      const idx = city_data.findIndex(
+        (item) => item.City === event.target.value
+      );
+      setinput_city({ name: event.target.value, idx: idx });
+      settown(city_data[idx].Town);
+    }
   };
 
   const _getResultData = async () => {
+    if (input_city.name === "選擇") return;
     const result = await getStationInfo(input_city.name);
     if (result !== undefined) {
-      setStations(dispatch, result.stationInfo,result.stationAvailability);
-      // setPopup(dispatch,{})
-      // setMapCenterPos(dispatch, city_data[input_city.idx].Position);
+      setStations(dispatch, result.stationInfo, result.stationAvailability);
+      setMapCenterPos(dispatch, city_data[input_city.idx].Position);
     }
   };
 
@@ -41,6 +45,9 @@ function SearchBar() {
             onChange={_HandleSelectCity}
             value={input_city.name}
           >
+            <option defaultValue value="選擇">
+              選擇
+            </option>
             {city_data.map((item, idx) => (
               <option key={`cityOption-${idx}`} value={item.City}>
                 {item.CityName}
