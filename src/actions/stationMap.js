@@ -1,13 +1,13 @@
 import {
-  SET_ROUTES,
+  SET_STATIONS,
   SET_POPUP,
-  SET_MAP_CENTER_POS
-} from "../utils/constants";
+  SET_MAP_CENTER_POS,
+} from "../utils/actions/stationMap";
 
-export const setRoutes = (dispatch, list) => {
+export const setStations = (dispatch, infoList, availabilityList) => {
   dispatch({
-    type: SET_ROUTES,
-    payload: list,
+    type: SET_STATIONS,
+    payload: { infoList: infoList, availabilityList: availabilityList },
   });
 };
 

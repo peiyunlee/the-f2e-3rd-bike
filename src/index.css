@@ -126,4 +126,7 @@ body {
   .grid-template-columns-min-content {
     grid-template-columns: min-content;
   }
+  .-translate-x-50 {
+    transform: translateX(-50%)
+  }
 }

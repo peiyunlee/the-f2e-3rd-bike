@@ -1,38 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useContext } from "react";
 import city_data from "../../assets/json/city.json";
-import { getRouteResult } from "../../api/routeApi";
-import { StoreContext } from "../../store/routeMap";
-import { setMapCenterPos, setPopup, setRoutes } from "../../actions/routeMap";
+import { getStationInfo } from "../../api/stationApi";
+import { StoreContext } from "../../store/stationMap";
+import { setMapCenterPos, setPopup, setStations } from "../../actions/stationMap";
 
 function SearchBar() {
   const { dispatch } = useContext(StoreContext);
-  const [town, settown] = useState([]);
-  const [input_city, setinput_city] = useState({ name: "選擇", idx: -1 });
+  const [town, settown] = useState(city_data[0].Town);
+  const [input_city, setinput_city] = useState({ name: "Taipei", idx: 0 });
 
   const _HandleSelectCity = (event) => {
-    if (event.target.value !== "選擇") {
-      const idx = city_data.findIndex(
-        (item) => item.City === event.target.value
-      );
-      setinput_city({ name: event.target.value, idx: idx });
-      if (idx !== -1) settown(city_data[idx].Town);
-    }
+    const idx = city_data.findIndex((item) => item.City === event.target.value);
+    setinput_city({ name: event.target.value, idx: idx });
+    settown(city_data[idx].Town);
   };
 
   const _getResultData = async () => {
-    if (input_city.name === "選擇") return;
-    const result = await getRouteResult(input_city.name);
+    const result = await getStationInfo(input_city.name);
     if (result !== undefined) {
-      setRoutes(dispatch, result);
-      setPopup(dispatch,{})
-      setMapCenterPos(dispatch, city_data[input_city.idx].Position);
+      setStations(dispatch, result.stationInfo,result.stationAvailability);
+      // setPopup(dispatch,{})
+      // setMapCenterPos(dispatch, city_data[input_city.idx].Position);
     }
   };
 
   return (
     <div className="bg-white max-h-full p-5 rounded w-80">
-      <h2 className="mb-3 text-xl">區域路線搜尋</h2>
+      <h2 className="mb-3 text-xl">站點搜尋</h2>
       <input
         className="input-text mb-2"
         type="text"
@@ -46,9 +41,6 @@ function SearchBar() {
             onChange={_HandleSelectCity}
             value={input_city.name}
           >
-            <option defaultValue value="選擇">
-              選擇
-            </option>
             {city_data.map((item, idx) => (
               <option key={`cityOption-${idx}`} value={item.City}>
                 {item.CityName}
