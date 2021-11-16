@@ -21,6 +21,7 @@ function Header() {
           className="w-max grid grid-col-2 grid-rows-2 grid-flow-col shadow-text"
           to="/"
           activeClassName=""
+          onClick={_HndleClickBtn}
         >
           <img className="row-span-2 mr-3" src={logo} alt="" />
           <h1 className="font-en tracking-widest">TAIWAN BIKE</h1>
