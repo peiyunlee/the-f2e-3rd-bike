@@ -5,7 +5,6 @@ export const StoreContext = createContext();
 
 const initialState = {
   stations: [],
-  popup: {},
   mapCenterPos:[23.583234, 120.5825975]
 };
 
@@ -19,17 +18,11 @@ function reducer(state, action) {
           arr.push({...iItem,...action.payload.availabilityList[idx]})
         }
       })
-      console.log(arr)
       return {
         ...state,
         stations: [
           ...arr
         ],
-      };
-    case actions.SET_POPUP:
-      return {
-        ...state,
-        popup: action.payload,
       };
       case actions.SET_MAP_CENTER_POS:
         return {

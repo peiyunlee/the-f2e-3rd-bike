@@ -1,10 +1,12 @@
 import { Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 import Map from "../components/Stationmap/StationMap";
 import SearchBar from "../components/Stationmap/SearchBar";
 
 function Station() {
+  const [isRent, setisRent] = useState(false);
   return (
     <div className="Roadmap content-full relative mt-header">
       <div className="absolute left-1/2 z-10 w-max mt-10 grid gap-5 grid-flow-col -translate-x-50">
@@ -30,7 +32,7 @@ function Station() {
           <SearchBar />
         </Route>
       </div>
-      <Map />
+      <Map isRent={isRent}/>
     </div>
   );
 }
