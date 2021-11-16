@@ -7,6 +7,11 @@ import SearchBar from "../components/Stationmap/SearchBar";
 
 function Station() {
   const [isRent, setisRent] = useState(false);
+
+  const _HandleClickLink = () => {
+    setisRent(!isRent)
+  }
+
   return (
     <div className="Roadmap content-full relative mt-header">
       <div className="absolute left-1/2 z-10 w-max mt-10 grid gap-5 grid-flow-col -translate-x-50">
@@ -16,13 +21,17 @@ function Station() {
           activeStyle={{
             backgroundColor: "#333333",
           }}
+          onClick={_HandleClickLink}
         >
           借車
         </NavLink>
         <NavLink
           to="/station/return"
           className="btn block text-white bg-gray-default hover:bg-black"
-          activeClassName="bg-black"
+          activeStyle={{
+            backgroundColor: "#333333",
+          }}
+          onClick={_HandleClickLink}
         >
           還車
         </NavLink>

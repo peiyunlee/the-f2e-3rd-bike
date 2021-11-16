@@ -65,8 +65,7 @@ function RouteMap() {
     if(bounds.length > 0 && popup.position === undefined){
       map.fitBounds(bounds)
     }
-      
-
+    
     return null;
   }
 

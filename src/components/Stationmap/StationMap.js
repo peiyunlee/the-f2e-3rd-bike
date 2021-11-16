@@ -1,6 +1,6 @@
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 
-import "../map.css";
+// import "../map.css";
 import { StoreContext } from "../../store/stationMap";
 import { useContext } from "react";
 import { iconMore, iconLess, iconZero, iconNull } from "./MarkerIcon";
@@ -18,7 +18,7 @@ function StationMap({ isRent }) {
         item.StationPosition.PositionLon,
       ];
       let icon = iconMore;
-      let colorClassName = "bg-green-default";
+      let colorClassName = "bg-yellow-default";
       let textStatus = ["可借車輛", "可停車輛", "停止營運"];
       let text = [];
 
@@ -32,10 +32,10 @@ function StationMap({ isRent }) {
             colorClassName = "bg-red";
           } else if (number <= 5) {
             icon = iconLess;
-            colorClassName = "bg-green-hover";
+            colorClassName = "bg-yellow-light";
           } else if (number > 5) {
             icon = iconMore;
-            colorClassName = "bg-green-default";
+            colorClassName = "bg-yellow-default";
           }
         } else {
           const number = item.AvailableReturnBikes;
@@ -46,10 +46,10 @@ function StationMap({ isRent }) {
             colorClassName = "bg-red";
           } else if (number <= 5) {
             icon = iconLess;
-            colorClassName = "bg-green-hover";
+            colorClassName = "bg-yellow-light";
           } else if (number > 5) {
             icon = iconMore;
-            colorClassName = "bg-green-default";
+            colorClassName = "bg-yellow-default";
           }
         }
       } else {
@@ -60,7 +60,7 @@ function StationMap({ isRent }) {
 
       list.push(
         <Marker position={position} icon={icon}>
-          <Popup position={position} autoClose={true} closeButton={false}>
+          <Popup position={position} autoClose={true} closeButton={true}>
             <div className="font-bold font-ch text-lg">
               {item.StationName.Zh_tw}
             </div>

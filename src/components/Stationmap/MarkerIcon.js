@@ -1,6 +1,6 @@
 import L from "leaflet";
-import green_more from "../../assets/icon/marker/green.svg";
-import green_less from "../../assets/icon/marker/green2.svg";
+import green_more from "../../assets/icon/marker/yellow.svg";
+import green_less from "../../assets/icon/marker/yellow2.svg";
 import green_zero from "../../assets/icon/marker/red.svg";
 import green_null from "../../assets/icon/marker/gray.svg";
 
