@@ -10,8 +10,11 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function Header() {
   const [show, setshow] = useState(false)
 
-  const _HndleClickBtn = () => {
-    setshow(!show)
+  const _HndleClickBtn = (type = 'toggle') => {
+    if(type === 'hide')
+      setshow(false)
+    else
+      setshow(!show)
   }
 
   return (
