@@ -9,8 +9,10 @@ import Breadcrumb from "./components/Breadcrumb";
 import Home from "./pages/Home";
 import RouteMap from "./pages/RouteMap";
 import News from "./pages/News";
+import StationMap from "./pages/StationMap";
 
-import { MLStoreProvider } from "./store/mapLayer";
+import { RMStoreProvider } from "./store/routeMap";
+import { SMStoreProvider } from "./store/stationMap";
 import { NewsStoreProvider } from "./store/newsData";
 
 function App() {
@@ -36,9 +38,15 @@ function App() {
           </Route>
           <Redirect exact from="/route" to="/route/district" />
           <Route path="/route">
-            <MLStoreProvider>
+            <RMStoreProvider>
               <RouteMap />
-            </MLStoreProvider>
+            </RMStoreProvider>
+          </Route>
+          <Redirect exact from="/station" to="/station/rent" />
+          <Route path="/station">
+            <SMStoreProvider>
+              <StationMap />
+            </SMStoreProvider>
           </Route>
         </Switch>
       </BrowserRouter>

@@ -5,13 +5,13 @@ import {
   Polyline,
   useMap,
 } from "react-leaflet";
-import { StoreContext } from "../store/mapLayer";
+import { StoreContext } from "../../store/routeMap";
 import { useContext, useState, useEffect } from "react";
-import { setPopup } from "../actions/mapLayer";
+import { setPopup } from "../../actions/routeMap";
 
-import "./map.css";
+import "../map.css";
 
-function Map() {
+function RouteMap() {
   const { state: { routes, popup,mapCenterPos }, dispatch } = useContext(StoreContext);
   const [centerPos, setcenterPos] = useState(mapCenterPos);
 
@@ -65,8 +65,7 @@ function Map() {
     if(bounds.length > 0 && popup.position === undefined){
       map.fitBounds(bounds)
     }
-      
-
+    
     return null;
   }
 
@@ -99,4 +98,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default RouteMap;

@@ -50,8 +50,8 @@ const routes = [
         ],
       },
       {
-        path: "/rent",
-        pathname: "rent",
+        path: "/station",
+        pathname: "station",
         breadcrumbName: "單車租借",
         routes: [
           {

@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import * as actions from "../utils/constants";
+import * as actions from "../utils/actions/routeMap";
 
 export const StoreContext = createContext();
 
@@ -56,7 +56,7 @@ function reducer(state, action) {
   }
 }
 
-export function MLStoreProvider(props) {
+export function RMStoreProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const value = { state, dispatch };
 

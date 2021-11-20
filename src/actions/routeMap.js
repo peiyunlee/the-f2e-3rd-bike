@@ -2,7 +2,7 @@ import {
   SET_ROUTES,
   SET_POPUP,
   SET_MAP_CENTER_POS
-} from "../utils/constants";
+} from "../utils/actions/routeMap";
 
 export const setRoutes = (dispatch, list) => {
   dispatch({
