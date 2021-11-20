@@ -6,7 +6,7 @@ import Map from "../components/Stationmap/StationMap";
 import SearchBar from "../components/Stationmap/SearchBar";
 
 function Station() {
-  const [isRent, setisRent] = useState(false);
+  const [isRent, setisRent] = useState(true);
 
   const _HandleClickLink = () => {
     setisRent(!isRent)
