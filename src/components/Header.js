@@ -69,7 +69,7 @@ function Header() {
             >
               自行車路線
             </NavLink>
-            <div className="hidden group-hover:block absolute top-16 z-50 bg-green-default rounded translate-x-50-y-75 right-1/2">
+            {/* <div className="hidden group-hover:block absolute top-16 z-50 bg-green-default rounded translate-x-50-y-75 right-1/2">
               <NavLink
                 className="nav-link group-hover:nav-link-hover border-0 text-white font-medium p-2 hover:text-yellow-disable"
                 to="/route/district"
@@ -89,7 +89,7 @@ function Header() {
               >
                 常用路線
               </NavLink>
-            </div>
+            </div> */}
           </div>
           <div className="group ml-8 w-max h-header flex items-center relative">
             <NavLink
