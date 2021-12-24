@@ -33,7 +33,7 @@ module.exports = {
           light: "#FFDB7E"
         },
         red: "#EB5757",
-        gray: { default: "#828282", light: "#C8C8C8", lighter: "#EDEDED" },
+        gray: { dark:"rgba(19, 19, 19, 0.71)", default: "#828282", light: "#C8C8C8", lighter: "#EDEDED" },
         blue: "#1a73e8"
       },
       fontFamily: {

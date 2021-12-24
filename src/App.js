@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 
 import ScrollToTop from "./components/ScrollToTop";
@@ -14,13 +15,16 @@ import StationMap from "./pages/StationMap";
 import { RMStoreProvider } from "./store/routeMap";
 import { SMStoreProvider } from "./store/stationMap";
 import { NewsStoreProvider } from "./store/newsData";
+import Auth from "./pages/Auth";
 
 function App() {
+  const [showAuth, setshowAuth] = useState(false);
   return (
     <div className="App w-screen">
       <BrowserRouter>
+        {showAuth ? <Auth setshowAuth={setshowAuth} /> : null}
         <ScrollToTop />
-        <Header />
+        <Header setshowAuth={setshowAuth}/>
         <Switch>
           <Route exact path="/">
             <NewsStoreProvider>

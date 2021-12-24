@@ -7,7 +7,7 @@ import { ReactComponent as CloseIcon } from '../assets/icon/close.svg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function Header() {
+function Header({setshowAuth}) {
   const [show, setshow] = useState(false)
 
   const _HndleClickBtn = (type = 'toggle') => {
@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <>
-      <div className="fixed top-0 w-full bg-white md:p-9 p-4 h-header text-black flex items-center justify-between z-50 shadow-defalut shadow-md text-sm">
+      <div className="fixed top-0 w-full bg-white md:p-9 p-4 h-header text-black flex items-center justify-between z-40 shadow-defalut shadow-md text-sm">
         <NavLink
           className="w-max grid grid-col-2 grid-rows-2 grid-flow-col shadow-text"
           to="/"
@@ -118,7 +118,7 @@ function Header() {
             </NavLink>
           </div>
           <div className="group ml-8 w-max h-header flex items-center relative">
-            <a className="nav-link text-yellow-default group-hover:text-yellow-hover">
+            <a className="nav-link text-yellow-default group-hover:text-yellow-hover" onClick={()=>setshowAuth(true)}>
               登入
             </a>
           </div>

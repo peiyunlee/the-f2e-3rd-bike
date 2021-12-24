@@ -31,6 +31,7 @@ function RouteMap() {
       RoadSectionEnd: data.RoadSectionEnd,
       CyclingLength: data.CyclingLength,
     };
+    console.log(positions)
     setPopup(dispatch, result);
     setcenterPos(e.latlng);
   }
