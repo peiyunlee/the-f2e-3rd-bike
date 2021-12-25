@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext } from "react";
 import * as actions from "../utils/actions/stationMap";
 
 export const StoreContext = createContext();
@@ -8,7 +8,7 @@ const initialState = {
   mapCenterPos:[23.583234, 120.5825975]
 };
 
-function reducer(state, action) {
+export function stationMapReducer(state=initialState, action) {
   switch (action.type) {
     case actions.SET_STATIONS:
       let arr = [];
@@ -32,15 +32,4 @@ function reducer(state, action) {
     default:
       return state;
   }
-}
-
-export function SMStoreProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
-
-  return (
-    <StoreContext.Provider value={value}>
-      {props.children}
-    </StoreContext.Provider>
-  );
 }

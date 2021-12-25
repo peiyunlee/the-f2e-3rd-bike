@@ -2,16 +2,13 @@ import { Route, Switch } from "react-router";
 import Announcement from "../components/News/Announcement";
 import Activity from "../components/News/Activity";
 import NewsInfo from "../components/News/NewsInfo";
-import { useContext } from "react";
-import { StoreContext } from "../store/newsData";
-
-import { NewsStoreProvider } from "../store/newsData";
+import { useSelector } from "react-redux";
 
 function News() {
+  const { news_announcement, news_activity } = useSelector(
+    (store) => store.newsDataReducer
+  );
 
-  const {
-    state: { news_announcement, news_activity },
-  } = useContext(StoreContext);
   return (
     <div className="flex justify-center text-black items-start min-height-75vh pb-20">
       <Switch>
@@ -28,9 +25,7 @@ function News() {
           />
         </Route>
         <Route path="/news/detail/:type/:id">
-          <NewsStoreProvider>
             <NewsInfo />
-          </NewsStoreProvider>
         </Route>
       </Switch>
     </div>

@@ -1,26 +1,26 @@
 import {
   SET_ROUTES,
   SET_POPUP,
-  SET_MAP_CENTER_POS
+  SET_MAP_CENTER_POS,
 } from "../utils/actions/routeMap";
 
-export const setRoutes = (dispatch, list) => {
-  dispatch({
+export const setRoutes = (list) => {
+  return {
     type: SET_ROUTES,
     payload: list,
-  });
+  };
 };
 
-export const setPopup = (dispatch, item) => {
-  dispatch({
+export const setPopup = (item) => {
+  return {
     type: SET_POPUP,
     payload: item,
-  });
+  };
 };
 
-export const setMapCenterPos = (dispatch, pos) => {
-  dispatch({
+export const setMapCenterPos = (pos) => {
+  return {
     type: SET_MAP_CENTER_POS,
     payload: pos,
-  });
+  };
 };

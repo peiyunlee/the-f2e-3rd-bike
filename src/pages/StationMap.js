@@ -9,8 +9,8 @@ function Station() {
   const [isRent, setisRent] = useState(false);
 
   const _HandleClickLink = () => {
-    setisRent(!isRent)
-  }
+    setisRent(!isRent);
+  };
 
   return (
     <div className="Roadmap content-full relative mt-header">
@@ -41,7 +41,7 @@ function Station() {
           <SearchBar />
         </Route>
       </div>
-      <Map isRent={isRent}/>
+      <Map isRent={isRent} />
     </div>
   );
 }

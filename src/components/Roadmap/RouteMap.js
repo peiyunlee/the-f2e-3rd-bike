@@ -5,14 +5,17 @@ import {
   Polyline,
   useMap,
 } from "react-leaflet";
-import { StoreContext } from "../../store/routeMap";
-import { useContext, useState, useEffect } from "react";
-import { setPopup } from "../../actions/routeMap";
+import { useState, useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
 
 import "../map.css";
+import * as actions from "../../actions/routeMap"
 
 function RouteMap() {
-  const { state: { routes, popup,mapCenterPos }, dispatch } = useContext(StoreContext);
+  const { routes, popup, mapCenterPos } = useSelector(
+    (store) => store.routeMapReducer
+  );
+  const dispatch = useDispatch()
   const [centerPos, setcenterPos] = useState(mapCenterPos);
 
   let bounds = [];
@@ -31,8 +34,8 @@ function RouteMap() {
       RoadSectionEnd: data.RoadSectionEnd,
       CyclingLength: data.CyclingLength,
     };
-    console.log(positions)
-    setPopup(dispatch, result);
+    console.log(positions);
+    dispatch(actions.setPopup(result));
     setcenterPos(e.latlng);
   }
 
@@ -63,10 +66,10 @@ function RouteMap() {
   function ChangeMap({ center }) {
     let map = useMap();
     map.panTo(center);
-    if(bounds.length > 0 && popup.position === undefined){
-      map.fitBounds(bounds)
+    if (bounds.length > 0 && popup.position === undefined) {
+      map.fitBounds(bounds);
     }
-    
+
     return null;
   }
 

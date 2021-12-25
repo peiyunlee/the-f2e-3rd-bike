@@ -6,14 +6,14 @@ export const StoreContext = createContext();
 const initialState = {
   routes: [],
   popup: {},
-  mapCenterPos:[23.583234, 120.5825975]
+  mapCenterPos: [23.583234, 120.5825975],
 };
 
 initialState.routes = initialState.routes.sort((a, b) => {
   return a.RouteName.localeCompare(b.RouteName, "zh-hant");
 });
 
-function reducer(state, action) {
+export function routeMapReducer(state = initialState, action) {
   let arr = state.routes;
   switch (action.type) {
     case actions.SET_ROUTES:
@@ -46,23 +46,12 @@ function reducer(state, action) {
         ...state,
         popup: action.payload,
       };
-      case actions.SET_MAP_CENTER_POS:
-        return {
-          ...state,
-          mapCenterPos: action.payload,
-        };
+    case actions.SET_MAP_CENTER_POS:
+      return {
+        ...state,
+        mapCenterPos: action.payload,
+      };
     default:
       return state;
   }
-}
-
-export function RMStoreProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
-
-  return (
-    <StoreContext.Provider value={value}>
-      {props.children}
-    </StoreContext.Provider>
-  );
 }

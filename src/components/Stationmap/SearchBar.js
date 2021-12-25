@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, useContext } from "react";
+import { useState } from "react";
 import city_data from "../../assets/json/city.json";
 import { getStationInfo } from "../../api/stationApi";
-import { StoreContext } from "../../store/stationMap";
-import { setMapCenterPos, setStations } from "../../actions/stationMap";
+import * as actions from "../../actions/stationMap";
+import { useDispatch } from "react-redux";
 
 function SearchBar() {
-  const { dispatch } = useContext(StoreContext);
+  const dispatch = useDispatch()
   const [town, settown] = useState(city_data[0].Town);
   const [input_city, setinput_city] = useState({ name: "選擇", idx: -1 });
 
@@ -24,8 +24,8 @@ function SearchBar() {
     if (input_city.name === "選擇") return;
     const result = await getStationInfo(input_city.name);
     if (result !== undefined) {
-      setStations(dispatch, result.stationInfo, result.stationAvailability);
-      setMapCenterPos(dispatch, city_data[input_city.idx].Position);
+      dispatch(actions.setStations(result.stationInfo, result.stationAvailability))
+      dispatch(actions.setMapCenterPos(city_data[input_city.idx].Position))
     }
   };
 

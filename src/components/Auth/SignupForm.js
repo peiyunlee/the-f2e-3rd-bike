@@ -1,25 +1,47 @@
 import { useState } from "react";
+import * as api from "../../api/auth";
 
-function SignupForm({setisLogin}) {
-  const ERRORMESSAGE = ["", "*兩次密碼不符合"];
-  const [errorMessage, seterrorMessage] = useState(ERRORMESSAGE[0]);
+function SignupForm({ setisLogin }) {
+  const MESSAGE = [" ", "*兩次密碼不符合", "*E-mail重複註冊", "succes"];
+  const [errorMessage, seterrorMessage] = useState(MESSAGE[0]);
   const [input_email, setinput_email] = useState("");
-  const [input_password, setinput_password] = useState(["",""]);
+  const [input_password1, setinput_password1] = useState("");
+  const [input_password2, setinput_password2] = useState("");
 
   const _handleInputEmailChange = (e) => {
     setinput_email(e.target.value);
   };
 
-  const _handleInputPasswordChange = (e,idx) => {
-    let password = input_password
-    password[idx] = e.target.value
-    setinput_password(password);
+  const _handleInputPasswordChange = (idx, e) => {
+    const password = e.target.value;
+    switch (idx) {
+      case 0:
+        setinput_password1(password);
+        break;
+      case 1:
+        setinput_password2(password);
+        break;
+      default:
+    }
   };
 
-  const _handleSubmit = (e) => {
+  const _handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(input_email);
-    console.log(input_password);
+
+    const data = {
+      email: input_email,
+      username: input_email,
+      password1: input_password1,
+      password2: input_password2,
+    };
+
+    try {
+      const result = await api.register(data);
+      if (result.status === 200) {
+        alert("註冊成功");
+        setisLogin(true);
+      } else seterrorMessage(result.detail);
+    } catch (error) {}
   };
 
   return (
@@ -43,10 +65,10 @@ function SignupForm({setisLogin}) {
           className="input-text mb-2"
           placeholder="請輸入密碼"
           type="password"
-          minLength="8"
+          minLength="6"
           required
-          value={input_password[0]}
-          onChange={(e)=>_handleInputPasswordChange(e,0)}
+          value={input_password1}
+          onChange={(e) => _handleInputPasswordChange(0, e)}
         />
       </label>
       <label className="w-80 flex flex-col justify-start">
@@ -55,14 +77,14 @@ function SignupForm({setisLogin}) {
           className="input-text mb-2"
           placeholder="請再輸入一次密碼"
           type="password"
-          minLength="8"
+          minLength="6"
           required
-          value={input_password[1]}
-          onChange={(e)=>_handleInputPasswordChange(e,1)}
+          value={input_password2}
+          onChange={(e) => _handleInputPasswordChange(1, e)}
         />
       </label>
-      <div>
-        <span className="text-red">{errorMessage}</span>
+      <div className="flex">
+        <span className="text-red h-6">{errorMessage}</span>
       </div>
       <input
         value="立即註冊"
@@ -71,7 +93,10 @@ function SignupForm({setisLogin}) {
       />
       <div className="flex">
         <span className="text-gray-default">已經有會員了嗎?</span>
-        <a className="text-yellow-default font-bold underline justify-self-end ml-2" onClick={()=>setisLogin(true)}>
+        <a
+          className="text-yellow-default font-bold underline justify-self-end ml-2"
+          onClick={() => setisLogin(true)}
+        >
           馬上登入
         </a>
       </div>

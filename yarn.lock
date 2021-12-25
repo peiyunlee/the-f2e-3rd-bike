@@ -9541,7 +9541,7 @@ react-leaflet@^3.0.0, react-leaflet@^3.2.2:
 
 react-redux@^7.2.6:
   version "7.2.6"
-  resolved "https://registry.npmmirror.com/react-redux/download/react-redux-7.2.6.tgz?cache=0&sync_timestamp=1635866168889&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-redux%2Fdownload%2Freact-redux-7.2.6.tgz#49633a24fe552b5f9caf58feb8a138936ddfe9aa"
+  resolved "https://registry.npmmirror.com/react-redux/download/react-redux-7.2.6.tgz#49633a24fe552b5f9caf58feb8a138936ddfe9aa"
   integrity sha1-SWM6JP5VK1+cr1j+uKE4k23f6ao=
   dependencies:
     "@babel/runtime" "^7.15.4"

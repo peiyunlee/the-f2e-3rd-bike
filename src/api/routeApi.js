@@ -1,7 +1,7 @@
 import axios from "../api";
 
 const baseUrl = `https://ptx.transportdata.tw/MOTC/v2/Cycling/Shape/`;
-const baseUrl_Param = `?$orderby=RouteName&&$format=JSON`;
+const baseUrl_Param = `?%24orderby=RouteName&%24format=JSON`;
 
 export const getRouteResult = async (cityName) => {
   try {

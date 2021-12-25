@@ -151,7 +151,7 @@ function Header({ setshowAuth }) {
             <FontAwesomeIcon icon={faSearch} size="lg" color="#333333" />
           </a>
         </div>
-        {/* <a
+        <a
           className="mb-4 nav-link group flex items-center flex-row"
           onClick={() => setshowAuth(true)}
         >
@@ -159,13 +159,13 @@ function Header({ setshowAuth }) {
             登入
           </span>
           <ArrowIcon className="ml-3" />
-        </a> */}
-        <div className="mb-4 nav-link group flex items-center flex-row">
+        </a>
+        {/* <div className="mb-4 nav-link group flex items-center flex-row">
           <UserIcon className="ml-1 mr-4" />
           <span className="text-xl text-yellow-default">
             已登入
           </span>
-        </div>
+        </div> */}
         <div className="border-b border-gray-light mb-10"></div>
         <div className="grid md:grid-flow-col md:grid-cols-none grid-cols-2 gap-y-10 gap-x-10 md:max-w-full max-w-lg">
           <div className="grid gap-3 justify-start grid-rows-3">

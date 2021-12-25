@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as api from "../../api/auth";
 
 function LoginForm({setisLogin}) {
   const ERRORMESSAGE = ["", "*E-mail尚未註冊", "*密碼輸入錯誤"];
@@ -14,10 +15,22 @@ function LoginForm({setisLogin}) {
     setinput_password(e.target.value);
   };
 
-  const _handleSubmit = (e) => {
+  const _handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(input_email);
-    console.log(input_password);
+    const data = {
+      email: input_email,
+      password: input_password,
+    };
+    try {
+      const result = await api.login(data);
+      console.log(result)
+      if (result.status === 200) {
+        // alert("註冊成功");
+        // setisLogin(true);
+      } else seterrorMessage(result.detail);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -45,7 +58,7 @@ function LoginForm({setisLogin}) {
             className="input-text mb-2"
             placeholder="請輸入密碼"
             type="password"
-            minLength="8"
+            minLength="6"
             required
             value={input_password}
             onChange={_handleInputPasswordChange}
