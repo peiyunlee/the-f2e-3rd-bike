@@ -152,7 +152,7 @@ function RouteMap({ routes }) {
       />
       {_renderRoutes()}
       {popup.position !== undefined ? (
-        <Popup position={centerPos} autoClose={false} closeButton={false}>
+        <Popup position={popup.position} autoClose={false} closeButton={false}>
           <a
             className="right-3 top-3 absolute cursor-pointer"
             onClick={() => _handleHeartClick(!popup.isStored ? false : true)}
