@@ -1,7 +1,8 @@
-import axios from "../api";
+import axios from ".";
 
-const cors = "https://cors-anywhere.herokuapp.com/";
-const baseUrl = `https://taiwan-bike-api.herokuapp.com/api/v1/users`;
+// const cors = "https://cors-anywhere.herokuapp.com/";
+// const baseUrl = `https://taiwan-bike-api.herokuapp.com/api/v1/users`;
+const baseUrl= `http://localhost:5000/api/v1/users`;
 
 export const register = async (inputData) => {
   if (inputData.password1 !== inputData.password2)
@@ -18,7 +19,7 @@ export const register = async (inputData) => {
     let detail = "";
     if (error.response === undefined)
       return {
-        status: 200,
+        status: 500,
         detail: "success",
       };
 
@@ -46,13 +47,12 @@ export const register = async (inputData) => {
 export const login = async (inputData) => {
     try {
         const res = await axios.post(baseUrl + "/signin", inputData);
-        console.log("success", res.data);
         return { status: res.status, user: res.data };
       } catch (error) {
         let detail = "";
         if (error.response === undefined)
           return {
-            status: 200,
+            status: 500,
             detail: "sssuccess",
           };
     

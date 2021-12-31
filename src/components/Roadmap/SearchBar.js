@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import city_data from "../../assets/json/city.json";
-import { getRouteResult } from "../../api/routeApi";
+import { getRouteResultByCity } from "../../api/routeApi";
 import * as actions from "../../actions/routeMap";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function SearchBar() {
 
   const _getResultData = async () => {
     if (input_city.name === "選擇") return;
-    const result = await getRouteResult(input_city.name);
+    const result = await getRouteResultByCity(input_city.name);
     if (result !== undefined) {
       dispatch(actions.setRoutes(result));
       dispatch(actions.setPopup({}));

@@ -1,6 +1,7 @@
 import {
   SET_ROUTES,
   SET_POPUP,
+  SET_POPUP_STORED,
   SET_MAP_CENTER_POS,
 } from "../utils/actions/routeMap";
 
@@ -15,6 +16,13 @@ export const setPopup = (item) => {
   return {
     type: SET_POPUP,
     payload: item,
+  };
+};
+
+export const setPopupStored = (newStatus) => {
+  return {
+    type: SET_POPUP_STORED,
+    payload: newStatus,
   };
 };
 

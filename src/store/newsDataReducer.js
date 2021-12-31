@@ -1,7 +1,4 @@
-import { createContext } from "react";
 import data_news from "../assets/json/news.json";
-
-export const StoreContext = createContext();
 
 let data_announcement = [];
 let data_activity = [];

@@ -1,7 +1,5 @@
-import { createContext } from "react";
-import * as actions from "../utils/actions/stationMap";
 
-export const StoreContext = createContext();
+import * as actions from "../utils/actions/stationMap";
 
 const initialState = {
   stations: [],

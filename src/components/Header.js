@@ -8,14 +8,24 @@ import { ReactComponent as UserIcon } from "../assets/icon/user.svg";
 import { ReactComponent as ArrowIcon } from "../assets/icon/arrow-right.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useSelector,useDispatch } from "react-redux";
+import * as actions from '../actions/auth'
 
 function Header({ setshowAuth }) {
+  const dispatch = useDispatch()
   const [show, setshow] = useState(false);
+  const { isLogin } = useSelector((store) => store.authReducer);
 
   const _HndleClickBtn = (type = "toggle") => {
     if (type === "hide") setshow(false);
     else setshow(!show);
   };
+
+  const _logout = ()=>{
+    dispatch(actions.logout())
+    localStorage.removeItem("currentUser")
+    alert("登出成功")
+  }
 
   return (
     <>
@@ -118,13 +128,22 @@ function Header({ setshowAuth }) {
             </NavLink>
           </div>
           <div className="group ml-8 w-max h-header flex items-center relative">
-            <a
-              className="nav-link text-yellow-default group-hover:text-yellow-hover"
-              onClick={() => setshowAuth(true)}
-            >
-              登入
-            </a>
-            {/* <UserIcon /> */}
+            {!isLogin ? (
+              <a
+                className="nav-link text-yellow-default group-hover:text-yellow-hover"
+                onClick={() => setshowAuth(true)}
+              >
+                登入
+              </a>
+            ) : (
+              <a
+                className="nav-link text-yellow-default group-hover:text-yellow-hover flex-row"
+                onClick={() => _logout()}
+              >
+                <UserIcon />
+                <span className="ml-2">登出</span>
+              </a>
+            )}
           </div>
         </div>
         <div className="lg:hidden relative" onClick={_HndleClickBtn}>
@@ -151,21 +170,22 @@ function Header({ setshowAuth }) {
             <FontAwesomeIcon icon={faSearch} size="lg" color="#333333" />
           </a>
         </div>
-        <a
-          className="mb-4 nav-link group flex items-center flex-row"
-          onClick={() => setshowAuth(true)}
-        >
-          <span className="text-xl text-yellow-default group-hover:text-yellow-hover">
-            登入
-          </span>
-          <ArrowIcon className="ml-3" />
-        </a>
-        {/* <div className="mb-4 nav-link group flex items-center flex-row">
-          <UserIcon className="ml-1 mr-4" />
-          <span className="text-xl text-yellow-default">
-            已登入
-          </span>
-        </div> */}
+        {!isLogin ? (
+          <a
+            className="mb-4 nav-link group flex items-center flex-row"
+            onClick={() => setshowAuth(true)}
+          >
+            <span className="text-xl text-yellow-default group-hover:text-yellow-hover">
+              登入
+            </span>
+            <ArrowIcon className="ml-3" />
+          </a>
+        ) : (
+          <div className="mb-4 nav-link group flex items-center flex-row">
+            <UserIcon className="ml-1 mr-4" />
+            <span className="text-xl text-yellow-default">已登入</span>
+          </div>
+        )}
         <div className="border-b border-gray-light mb-10"></div>
         <div className="grid md:grid-flow-col md:grid-cols-none grid-cols-2 gap-y-10 gap-x-10 md:max-w-full max-w-lg">
           <div className="grid gap-3 justify-start grid-rows-3">

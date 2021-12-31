@@ -1,7 +1,4 @@
-import { createContext, useReducer } from "react";
 import * as actions from "../utils/actions/routeMap";
-
-export const StoreContext = createContext();
 
 const initialState = {
   routes: [],
@@ -50,6 +47,14 @@ export function routeMapReducer(state = initialState, action) {
       return {
         ...state,
         mapCenterPos: action.payload,
+      };
+    case actions.SET_POPUP_STORED:
+      return {
+        ...state,
+        popup: {
+          ...state.popup,
+          isStored: action.payload,
+        },
       };
     default:
       return state;

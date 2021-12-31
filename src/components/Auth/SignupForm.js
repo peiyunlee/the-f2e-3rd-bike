@@ -1,5 +1,6 @@
 import { useState } from "react";
-import * as api from "../../api/auth";
+import * as authApi from "../../api/authApi";
+import * as storeApi from "../../api/storeApi";
 
 function SignupForm({ setisLogin }) {
   const MESSAGE = [" ", "*兩次密碼不符合", "*E-mail重複註冊", "succes"];
@@ -36,12 +37,23 @@ function SignupForm({ setisLogin }) {
     };
 
     try {
-      const result = await api.register(data);
-      if (result.status === 200) {
+      const register_result = await authApi.register(data);
+      if (register_result.status === 200 || register_result.status === 500) {
+        const store_result = await storeApi.createStore(
+          {
+            user_id: register_result.user.user_id,
+            username: register_result.user.username,
+          },
+          register_result.user.access_token
+        );
+        console.log(store_result);
         alert("註冊成功");
+        seterrorMessage("");
         setisLogin(true);
-      } else seterrorMessage(result.detail);
-    } catch (error) {}
+      } else seterrorMessage(register_result.detail);
+    } catch (error) {
+      seterrorMessage("error");
+    }
   };
 
   return (

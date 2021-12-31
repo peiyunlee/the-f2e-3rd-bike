@@ -1,0 +1,15 @@
+export const LOGIN = "LOGIN";
+
+export const LOGOUT = "LOGOUT"
+
+// export const SET_STORED_ROUTES_DATA = "SET_STORED_ROUTES_DATA"
+
+// export const STORE_ROUTE_DATA = "STORE_ROUTE_DATA"
+
+// export const REMOVE_STORED_ROUTE_DATA = "REMOVE_STORED_ROUTE_DATA"
+
+export const SET_STORED_ROUTES = "SET_STORED_ROUTES"
+
+export const STORE_ROUTE = "STORE_ROUTE"
+
+export const REMOVE_STORED_ROUTE = "REMOVE_STORED_ROUTE"

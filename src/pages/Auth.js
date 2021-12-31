@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from "react";
 import LoginForm from "../components/Auth/LoginForm";
 import SignupForm from "../components/Auth/SignupForm";
@@ -16,7 +17,7 @@ function Auth({ setshowAuth }) {
           <CloseIcon />
         </a>
         {isLogin ? (
-          <LoginForm setisLogin={setisLogin} />
+          <LoginForm setisLogin={setisLogin} setshowAuth={setshowAuth}/>
         ) : (
           <SignupForm setisLogin={setisLogin} />
         )}
