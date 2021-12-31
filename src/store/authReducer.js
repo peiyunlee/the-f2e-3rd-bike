@@ -15,12 +15,10 @@ const initialState = {
   isLogin: isLogin,
   user: user,
   storeRoutes: [],
-  // storeRoutesData: [],
 };
 console.log(initialState.user);
 
 export function authReducer(state = initialState, action) {
-  // let storeRoutesData = state.storeRoutesData;
   let storeRoutes = state.storeRoutes;
   let findIdx = -1;
   switch (action.type) {
@@ -44,34 +42,6 @@ export function authReducer(state = initialState, action) {
         },
         storeRoutes: [],
       };
-    // case actions.SET_STORED_ROUTES_DATA:
-    //   return {
-    //     ...state,
-    //     storeRoutesData: action.payload.routes,
-    //   };
-    // case actions.STORE_ROUTE_DATA:
-    //   storeRoutesData.push({
-    //     city: action.payload.city,
-    //     routename: action.payload.routename,
-    //   });
-    //   return {
-    //     ...state,
-    //     storeRoutesData: storeRoutesData,
-    //   };
-    // case actions.REMOVE_STORED_ROUTE_DATA:
-    //   findIdx = storeRoutesData.findIndex(
-    //     (ele) =>
-    //       ele.city === action.payload.route.city &&
-    //       ele.routename === action.payload.route.routename
-    //   );
-    //   if (findIdx === -1) return state;
-    //   return {
-    //     ...state,
-    //     storeRoutesData: [
-    //       ...storeRoutesData.slice(0, findIdx),
-    //       ...storeRoutesData.slice(findIdx + 1),
-    //     ],
-    //   };
     case actions.SET_STORED_ROUTES:
       return {
         ...state,

@@ -27,9 +27,6 @@ function Roadmap() {
   const getStoredRoutes = async () => {
     let result = await storeApi.getStoredRoutesByUserId(user.user_id);
     if (result.status === 200) {
-      // dispatch(storeActions.setStoredRoutesData(result.routes.route_items));
-
-      //get each route data from tdx api
       let arr = [];
 
       for (const item of result.routes.route_items) {

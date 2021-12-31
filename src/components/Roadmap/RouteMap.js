@@ -107,7 +107,6 @@ function RouteMap({ routes }) {
         user.access_token
       );
       if (result.status === 200) {
-        // dispatch(storeActions.storeRouteData(result.route));
 
         const city = cityData.find((ele) => ele.CityName === popup.City).City;
         const item_result = await routeApi.getSingleRouteResult(
@@ -129,7 +128,6 @@ function RouteMap({ routes }) {
       );
       console.log(result.route)
       if (result.status === 200) {
-        // dispatch(storeActions.removeStoredRouteData(result.route));
         dispatch(storeActions.removeStoredRoute(result.route));
         dispatch(mapActions.setPopupStored(false));
       }
