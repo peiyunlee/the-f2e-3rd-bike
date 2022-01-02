@@ -118,6 +118,7 @@ function RouteMap({ routes }) {
         dispatch(mapActions.setPopupStored(true));
       }
     } else {
+      console.log(popup.RouteName)
       const result = await storeApi.removeStoreRoute(
         {
           store_id: user.user_id,

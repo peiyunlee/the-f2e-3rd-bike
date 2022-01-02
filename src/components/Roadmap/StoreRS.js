@@ -9,7 +9,7 @@ function StoreRS() {
       <div className="w-full border-b border-gray mb-3"></div>
       <div className="grid gap-0.5">
         {storeRoutes.map((ele, idx) => (
-          <StoreItem key={`store+${idx}`} data={ele} />
+          <StoreItem key={`store+${ele.RouteName}`} data={ele} />
         ))}
       </div>
     </div>

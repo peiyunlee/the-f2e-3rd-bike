@@ -56,10 +56,12 @@ export function authReducer(state = initialState, action) {
     case actions.REMOVE_STORED_ROUTE:
       findIdx = storeRoutes.findIndex(
         (ele) =>
-          ele.City === action.payload.route.city &&
-          ele.RouteName === action.payload.route.routename
+          ele.RouteName === action.payload.route.routename &&
+          ele.City === action.payload.route.city
       );
       if (findIdx === -1) return state;
+      console.log(action.payload.route)
+      console.log(state.storeRoutes)
       return {
         ...state,
         storeRoutes: [

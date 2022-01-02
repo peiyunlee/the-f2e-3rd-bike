@@ -54,6 +54,8 @@ export const storeRoute = async (routeData, access_token) => {
 };
 
 export const removeStoreRoute = async (routeData, access_token) => {
+  
+  console.log(routeData.routename)
   try {
     const res = await axios.post(baseUrl + "/route/remove", routeData, {
       headers: { Authorization: `Bearer ${access_token}` },
