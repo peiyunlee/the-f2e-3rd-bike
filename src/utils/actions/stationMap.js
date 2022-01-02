@@ -1,3 +1,5 @@
 export const SET_MAP_CENTER_POS = "SET_MAP_CENTER_POS";
 
 export const SET_STATIONS = "SET_STATIONS";
+
+export const REFRESH_STATIONS = "REFRESH_STATIONS";

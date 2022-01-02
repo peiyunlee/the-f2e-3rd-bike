@@ -1,14 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import city_data from "../../assets/json/city.json";
 import { getStationInfo } from "../../api/stationApi";
 import * as actions from "../../actions/stationMap";
 import { useDispatch } from "react-redux";
 
 function SearchBar() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [town, settown] = useState(city_data[0].Town);
   const [input_city, setinput_city] = useState({ name: "選擇", idx: -1 });
+  const [isSearch, setisSearch] = useState(false);
+
+  // useEffect(() => {
+  //   if(isSearch)
+  //     setInterval(_refreshResultData,60000)
+  // }, [isSearch]);
 
   const _HandleSelectCity = (event) => {
     if (event.target.value !== "選擇") {
@@ -22,10 +28,23 @@ function SearchBar() {
 
   const _getResultData = async () => {
     if (input_city.name === "選擇") return;
+    setisSearch(true)
     const result = await getStationInfo(input_city.name);
     if (result !== undefined) {
-      dispatch(actions.setStations(result.stationInfo, result.stationAvailability))
-      dispatch(actions.setMapCenterPos(city_data[input_city.idx].Position))
+      dispatch(
+        actions.setStations(result.stationInfo, result.stationAvailability)
+      );
+      dispatch(actions.setMapCenterPos(city_data[input_city.idx].Position));
+    }
+  };
+
+  const _refreshResultData = async () => {
+    if (input_city.name === "選擇") return;
+    const result = await getStationInfo(input_city.name);
+    if (result !== undefined) {
+      dispatch(
+        actions.setStations(result.stationInfo, result.stationAvailability)
+      );
     }
   };
 

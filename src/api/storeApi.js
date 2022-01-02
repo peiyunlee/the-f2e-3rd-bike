@@ -1,8 +1,8 @@
 import axios from ".";
 
 // const cors = "https://cors-anywhere.herokuapp.com/";
-// const baseUrl = `https://taiwan-bike-api.herokuapp.com/api/v1/users`;
-const baseUrl = `http://localhost:5000/api/v1/store`;
+const baseUrl = `https://taiwan-bike-api.herokuapp.com/api/v1/store`;
+// const baseUrl = `http://localhost:5000/api/v1/store`;
 
 export const createStore = async (userData, access_token) => {
   try {

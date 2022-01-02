@@ -8,11 +8,11 @@ import { ReactComponent as UserIcon } from "../assets/icon/user.svg";
 import { ReactComponent as ArrowIcon } from "../assets/icon/arrow-right.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useSelector,useDispatch } from "react-redux";
-import * as actions from '../actions/auth'
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../actions/auth";
 
 function Header({ setshowAuth }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [show, setshow] = useState(false);
   const { isLogin } = useSelector((store) => store.authReducer);
 
@@ -21,11 +21,11 @@ function Header({ setshowAuth }) {
     else setshow(!show);
   };
 
-  const _logout = ()=>{
-    dispatch(actions.logout())
-    localStorage.removeItem("currentUser")
-    alert("登出成功")
-  }
+  const _logout = () => {
+    dispatch(actions.logout());
+    localStorage.removeItem("currentUser");
+    alert("登出成功");
+  };
 
   return (
     <>
@@ -146,7 +146,10 @@ function Header({ setshowAuth }) {
             )}
           </div>
         </div>
-        <div className="lg:hidden relative" onClick={_HndleClickBtn}>
+        <div
+          className="lg:hidden relative cursor-pointer"
+          onClick={_HndleClickBtn}
+        >
           <div className={!show ? "block" : "hidden"}>
             <MenuIcon />
           </div>
@@ -181,10 +184,13 @@ function Header({ setshowAuth }) {
             <ArrowIcon className="ml-3" />
           </a>
         ) : (
-          <div className="mb-4 nav-link group flex items-center flex-row">
+          <a
+            className="mb-4 nav-link group flex items-center flex-row"
+            onClick={() => _logout()}
+          >
             <UserIcon className="ml-1 mr-4" />
-            <span className="text-xl text-yellow-default">已登入</span>
-          </div>
+            <span className="text-xl text-yellow-default">登出</span>
+          </a>
         )}
         <div className="border-b border-gray-light mb-10"></div>
         <div className="grid md:grid-flow-col md:grid-cols-none grid-cols-2 gap-y-10 gap-x-10 md:max-w-full max-w-lg">
@@ -231,13 +237,13 @@ function Header({ setshowAuth }) {
             >
               站點資訊
             </Link>
-            <Link
+            {/* <Link
               onClick={_HndleClickBtn}
               to="/station/store"
               className="text-left tracking-wide hover:text-green-hover"
             >
               常用路線
-            </Link>
+            </Link> */}
           </div>
           <div className="grid gap-3 justify-start grid-rows-3">
             <span className="font-bold text-left tracking-wide md:text-xl">
