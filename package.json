@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build && sw-precache --config=sw-config.js --root='build/' --static-file-globs='build/**/!(*map*)'",
+    "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "mac-start": "craco --openssl-legacy-provider start"
