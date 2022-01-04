@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
 import city_data from "../../assets/json/city.json";
-import { getRouteResult } from "../../api/routeApi";
-import { StoreContext } from "../../store/routeMap";
-import { setMapCenterPos, setPopup, setRoutes } from "../../actions/routeMap";
+import { getRouteResultByCity } from "../../api/routeApi";
+import * as actions from "../../actions/routeMap";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function SearchBar() {
-  const { dispatch } = useContext(StoreContext);
+  const dispatch = useDispatch();
   const [town, settown] = useState([]);
   const [input_city, setinput_city] = useState({ name: "選擇", idx: -1 });
 
@@ -22,11 +23,11 @@ function SearchBar() {
 
   const _getResultData = async () => {
     if (input_city.name === "選擇") return;
-    const result = await getRouteResult(input_city.name);
+    const result = await getRouteResultByCity(input_city.name);
     if (result !== undefined) {
-      setRoutes(dispatch, result);
-      setPopup(dispatch,{})
-      setMapCenterPos(dispatch, city_data[input_city.idx].Position);
+      dispatch(actions.setRoutes(result));
+      dispatch(actions.setPopup({}));
+      dispatch(actions.setMapCenterPos(city_data[input_city.idx].Position));
     }
   };
 

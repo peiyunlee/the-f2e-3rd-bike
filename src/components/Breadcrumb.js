@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../utils/routes";
-import { useContext } from "react";
-import { StoreContext } from "../store/newsData";
+import { useSelector } from "react-redux";
 
 const flattenArr = (arr) =>
   arr.reduce(function (prev, item) {
@@ -18,9 +17,7 @@ const flattenRoutes = flattenArr(routes);
 function Breadcrumb() {
   let location = useLocation();
 
-  const {
-    state: { news },
-  } = useContext(StoreContext);
+  const {news}= useSelector((store) => store.newsDataReducer);
 
   const _RenderBreadItem = () => {
     let list = [];

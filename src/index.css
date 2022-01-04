@@ -104,6 +104,9 @@ body {
     .btn-green-hover {
       @apply text-white bg-green-hover border-green-hover font-normal transition duration-200;
     }
+    .btn-yellow-hover {
+      @apply text-white bg-yellow-hover border-yellow-hover font-normal transition duration-200;
+    }
   }
   .nav-link-active {
     @apply border-green-default;

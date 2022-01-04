@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { useParams } from "react-router";
-import { Fragment, useContext } from "react";
-import { StoreContext } from "../../store/newsData";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
 
 function NewsInfo() {
   const { id } = useParams();
 
-  const {
-    state: { news },
-  } = useContext(StoreContext);
+  const { news } = useSelector(
+    (store) => store.newsDataReducer
+  );
 
   const _RenderAnnouncementInfo = () => {
     return news[id].information.map((paragraph, idx) => (

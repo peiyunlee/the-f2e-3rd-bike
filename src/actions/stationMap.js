@@ -3,16 +3,16 @@ import {
   SET_MAP_CENTER_POS,
 } from "../utils/actions/stationMap";
 
-export const setStations = (dispatch, infoList, availabilityList) => {
-  dispatch({
+export const setStations = (infoList, availabilityList) => {
+  return {
     type: SET_STATIONS,
     payload: { infoList: infoList, availabilityList: availabilityList },
-  });
+  };
 };
 
-export const setMapCenterPos = (dispatch, pos) => {
-  dispatch({
+export const setMapCenterPos = (pos) => {
+  return {
     type: SET_MAP_CENTER_POS,
     payload: pos,
-  });
+  };
 };

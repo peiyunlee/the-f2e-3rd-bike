@@ -2,8 +2,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { StoreContext } from "../store/newsData";
 
 import NewsItem from "../components/News/NewsItem";
 
@@ -11,10 +9,12 @@ import main from "../assets/main.png";
 import bike from "../assets/icon/bike.png";
 import timeline from "../assets/icon/timeline.png";
 
+import { useSelector } from "react-redux";
+
 function Home() {
-  const {
-    state: { news_announcement, news_activity },
-  } = useContext(StoreContext);
+  const { news_announcement, news_activity } = useSelector(
+    (store) => store.newsDataReducer
+  );
 
   return (
     <div className="pb-20 w-full mt-header">
@@ -61,7 +61,7 @@ function Home() {
       <div className="section grid grid-cols-1 justify-items-center gap-10">
         <h3>最新公告</h3>
         <div className="w-full max-w-screen-xl lg:px-10">
-          {news_announcement.slice(0,5).map((item, idx) => (
+          {news_announcement.slice(0, 5).map((item, idx) => (
             <NewsItem
               key={`news-announcement-${idx}`}
               data={item}
@@ -79,7 +79,7 @@ function Home() {
       <div className="section grid grid-cols-1 justify-items-center gap-10">
         <h3>近期活動</h3>
         <div className="w-full max-w-screen-xl lg:px-10">
-          {news_activity.slice(0,5).map((item, idx) => (
+          {news_activity.slice(0, 5).map((item, idx) => (
             <NewsItem
               key={`news-activity-${idx}`}
               data={item}

@@ -1,14 +1,14 @@
 import { MapContainer, Marker, TileLayer, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 // import "../map.css";
-import { StoreContext } from "../../store/stationMap";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { iconMore, iconLess, iconZero, iconNull } from "./MarkerIcon";
+import { useSelector } from "react-redux";
 
 function StationMap({ isRent }) {
-  const {
-    state: { stations, mapCenterPos },
-  } = useContext(StoreContext);
+  const { stations, mapCenterPos } = useSelector(
+    (store) => store.stationMapReducer
+  );
   const [centerPos, setcenterPos] = useState(mapCenterPos);
 
   useEffect(() => {
@@ -99,7 +99,7 @@ function StationMap({ isRent }) {
     let map = useMap();
     if (center !== undefined) {
       map.panTo(center);
-      setcenterPos(undefined)
+      setcenterPos(undefined);
     }
     return null;
   }

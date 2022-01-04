@@ -1,7 +1,4 @@
-import { createContext, useReducer } from "react";
 import data_news from "../assets/json/news.json";
-
-export const StoreContext = createContext();
 
 let data_announcement = [];
 let data_activity = [];
@@ -14,10 +11,11 @@ data_news.forEach((ele) => {
 const initialState = {
   news: [],
   news_announcement: [],
-  news_activity: []
+  news_activity: [],
 };
 
-initialState.news = data_news.sort(function (a, b) {
+initialState.news = data_news
+  .sort(function (a, b) {
     const one = a.newsTime.split(" / ").join("");
     const two = b.newsTime.split(" / ").join("");
     return two - one;
@@ -26,23 +24,12 @@ initialState.news = data_news.sort(function (a, b) {
     if (item.type === "活動資訊") initialState.news_activity.push(item);
     else initialState.news_announcement.push(item);
     item.id = idx;
-    return item
+    return item;
   });
 
-function reducer(state, action) {
+export function newsDataReducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;
   }
-}
-
-export function NewsStoreProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
-
-  return (
-    <StoreContext.Provider value={value}>
-      {props.children}
-    </StoreContext.Provider>
-  );
 }
