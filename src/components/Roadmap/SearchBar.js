@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import city_data from "../../assets/json/city.json";
 import { getRouteResultByCity } from "../../api/routeApi";
 import * as actions from "../../actions/routeMap";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 
 function SearchBar() {
   const dispatch = useDispatch();

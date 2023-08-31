@@ -74,7 +74,7 @@ function SearchBar() {
             ))}
           </select>
         </div>
-        <div className="flex flex-col items-start w-full">
+        {/* <div className="flex flex-col items-start w-full">
           <span className="font-bold mb-2">鄉鎮區</span>
           <select className="input-select">
             <option defaultValue value="全部">
@@ -84,9 +84,9 @@ function SearchBar() {
               <option key={`townOption-${idx}`} value={item.TownName}>
                 {item.TownName}
               </option>
-            ))}
+            ))} 
           </select>
-        </div>
+        </div> */}
       </div>
       <a
         className="btn bg-green-default w-full text-white mr-2.5 block"

@@ -1,15 +1,18 @@
-import axios from "../api";
+import axios from "axios";
+import tdxHeaders from "./index"
 
-const baseUrl_Availability = `https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/`;
+const baseUrl_Availability = `https://tdx.transportdata.tw/api/basic/v2/Bike/Availability/City/`;
 const baseUrl_Param_Availability = `?$format=JSON`;
 
-const baseUrl_info = `https://ptx.transportdata.tw/MOTC/v2/Bike/Station/`;
+const baseUrl_info = ` https://tdx.transportdata.tw/api/basic/v2/Bike/Station/City/`;
 const baseUrl_Param_info = `?$format=JSON`;
 
 export const getStationInfo = async (city) => {
   try {
-    const result_info = await axios.get(baseUrl_info + city + baseUrl_Param_info);
-    const result_availability = await axios.get(baseUrl_Availability + city + baseUrl_Param_Availability);
+    let url = baseUrl_info + city + baseUrl_Param_info
+    const result_info = await axios.get(url, { headers: tdxHeaders });
+    url = baseUrl_Availability + city + baseUrl_Param_Availability
+    const result_availability = await axios.get(url, { headers: tdxHeaders })
     return { stationInfo: result_info.data, stationAvailability: result_availability.data };
   } catch (error) {
     alert("查無資料!!");

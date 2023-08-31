@@ -15,6 +15,7 @@ function Home() {
   const { news_announcement, news_activity } = useSelector(
     (store) => store.newsDataReducer
   );
+  
 
   return (
     <div className="pb-20 w-full mt-header">

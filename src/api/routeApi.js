@@ -1,11 +1,12 @@
-import axios from "../api";
+import axios from "axios";
+import tdxHeaders from "./index"
 
-const baseUrl = `https://ptx.transportdata.tw/MOTC/v2/Cycling/Shape/`;
+const baseUrl = `https://tdx.transportdata.tw/api/basic/v2/Cycling/Shape/City/`;
 const baseUrl_Param = `%24orderby=RouteName&%24format=JSON`;
 
 export const getRouteResultByCity = async (cityName) => {
   try {
-    let result = await axios.get(`${baseUrl}${cityName}?${baseUrl_Param}`);
+    let result = await axios.get(`${baseUrl}${cityName}?${baseUrl_Param}`, { headers: tdxHeaders });
     result.data = result.data
       .map((ele) => ({
         ...ele,
@@ -32,7 +33,7 @@ export const getRouteResultByCity = async (cityName) => {
 
 export const getSingleRouteResult = async (cityName, routeName) => {
   try {
-    let result = await axios.get(`${baseUrl}${cityName}?%24filter=RouteName%20eq%20'${routeName}'&%24orderby=RouteName&%24top=30&%24format=JSON`);
+    let result = await axios.get(`${baseUrl}${cityName}?%24filter=RouteName%20eq%20'${routeName}'&%24orderby=RouteName&%24top=30&%24format=JSON`, { headers: tdxHeaders });
     result.data = result.data
       .map((ele) => ({
         ...ele,
