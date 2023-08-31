@@ -58,15 +58,15 @@ function SearchBar() {
         </div>
         <div className="flex flex-col items-start w-full">
           <span className="font-bold mb-2">鄉鎮區</span>
-          <select className="input-select">
-            <option defaultValue value="全部">
+          <select className="input-select" disabled>
+            <option defaultValue value="全部" >
               全部
             </option>
-            {town.map((item, idx) => (
+            {/* {town.map((item, idx) => (
               <option key={`townOption-${idx}`} value={item.TownName}>
                 {item.TownName}
               </option>
-            ))}
+            ))} */}
           </select>
         </div>
       </div>

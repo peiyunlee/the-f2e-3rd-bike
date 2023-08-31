@@ -27,7 +27,11 @@ export const getRouteResultByCity = async (cityName) => {
     // console.log(result.data)
     return result.data;
   } catch (error) {
-    alert("查無資料!!");
+    if(error.response.status == 429){
+      alert("API呼叫太多次");
+    }
+    else
+      alert("查無資料!!");
   }
 };
 
@@ -51,7 +55,11 @@ export const getSingleRouteResult = async (cityName, routeName) => {
     // console.log(result.data)
     return result.data;
   } catch (error) {
-    console.log(routeName)
+    if(error.response.status == 429){
+      alert("API呼叫太多次");
+    }
+    else
+      console.log(routeName)
   }
 };
 

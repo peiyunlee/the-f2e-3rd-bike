@@ -15,6 +15,10 @@ export const getStationInfo = async (city) => {
     const result_availability = await axios.get(url, { headers: tdxHeaders })
     return { stationInfo: result_info.data, stationAvailability: result_availability.data };
   } catch (error) {
-    alert("查無資料!!");
+    if(error.response.status == 429){
+      alert("API呼叫太多次");
+    }
+    else
+      alert("查無資料!!");
   }
 };
